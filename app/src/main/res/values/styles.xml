@@ -23,4 +23,12 @@
         <item name="android:textStyle">normal</item>
     </style>
 
+    <style name="EditTextStyle" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/colorBlack38</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:lineSpacingExtra">5sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
 </resources>
