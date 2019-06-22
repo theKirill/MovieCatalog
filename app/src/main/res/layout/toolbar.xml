@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.Toolbar
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
         android:id="@+id/toolbar"
-        android:background="@color/colorGrey">
+        android:background="@color/colorGrey"
+        app:contentInsetStart="0dp"
+        android:descendantFocusability="beforeDescendants"
+        android:focusableInTouchMode="true">
 
     <EditText
             android:id="@+id/et_search"
@@ -15,6 +18,12 @@
             android:drawablePadding="27.5dp"
             android:paddingStart="19dp"
             android:background="@drawable/rounded_edittext"
-            android:layout_marginEnd="8dp"/>
+            android:layout_margin="8dp"/>
+
+    <ProgressBar
+            android:id="@+id/progress_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
 
 </android.support.v7.widget.Toolbar>

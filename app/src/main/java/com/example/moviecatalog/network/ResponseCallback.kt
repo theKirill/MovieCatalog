@@ -2,5 +2,6 @@ package com.example.moviecatalog.network
 
 interface ResponseCallback<R> {
 
-    fun onEnd(apiResponse: R)
+    fun onSuccess(apiResponse: R)
+    fun onError()
 }

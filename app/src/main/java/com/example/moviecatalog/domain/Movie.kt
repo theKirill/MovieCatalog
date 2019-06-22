@@ -1,4 +1,4 @@
-package com.example.moviecatalog.models
+package com.example.moviecatalog.domain
 
 class Movie(
     private val id: Int,

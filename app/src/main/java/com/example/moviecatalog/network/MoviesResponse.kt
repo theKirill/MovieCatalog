@@ -1,7 +1,8 @@
 package com.example.moviecatalog.network
 
-import com.example.moviecatalog.models.Movie
+import com.example.moviecatalog.domain.Movie
 import com.example.moviecatalog.translateDate
+import com.example.moviecatalog.translatePosterURL
 import com.google.gson.annotations.SerializedName
 
 data class MoviesResponse(
@@ -26,7 +27,7 @@ data class MovieFromServer(
         return Movie(
             this.id,
             this.title,
-            "",
+            translatePosterURL(this.posterURL),
             this.description,
             translateDate(this.date)
         )
