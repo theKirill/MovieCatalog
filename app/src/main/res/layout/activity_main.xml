@@ -5,7 +5,8 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context=".activity.MainActivity"
+android:background="@color/colorGrey">
 
     <android.support.design.widget.CoordinatorLayout
             android:id="@+id/layout_main"
@@ -48,6 +49,7 @@
                         android:scrollbars="vertical">
                 </android.support.v7.widget.RecyclerView>
 
+
             </android.support.v4.widget.SwipeRefreshLayout>
 
         </FrameLayout>
@@ -62,10 +64,11 @@
 
             <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/image_no_connection"
+                    android:layout_width="65dp"
+                    android:layout_height="55dp"
                     android:src="@drawable/ic_alert"
                     android:layout_centerInParent="true"
-                    android:layout_width="65dp"
-                    android:layout_height="55dp"/>
+                    android:layout_marginTop="60dp"/>
 
             <TextView
                     android:id="@+id/tv_error_internet"
@@ -101,10 +104,11 @@
 
             <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/image_no_data"
-                    android:layout_width="52dp"
-                    android:layout_height="45dp"
+                    android:layout_width="66dp"
+                    android:layout_height="55dp"
                     android:src="@drawable/ic_big_search"
-                    android:layout_centerInParent="true"/>
+                    android:layout_marginTop="194dp"
+                    android:layout_centerHorizontal="true"/>
 
             <TextView
                     android:id="@+id/tv_nothing_found"

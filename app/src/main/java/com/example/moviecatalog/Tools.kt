@@ -3,6 +3,9 @@ package com.example.moviecatalog
 import java.util.*
 
 fun translateDate(badDate: String): String {
+    if (badDate.isEmpty())
+        return ""
+
     var resDate = ""
 
     val calendar = Calendar.getInstance()

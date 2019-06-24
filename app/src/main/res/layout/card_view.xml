@@ -61,8 +61,7 @@
                     android:layout_marginStart="12dp"
                     android:layout_toEndOf="@+id/image_poster"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginBottom="12dp"
-            />
+                    android:layout_marginBottom="12dp"/>
 
             <TextView
                     android:id="@+id/tv_date"
@@ -75,8 +74,7 @@
                     android:maxLines="3"
                     tools:text="1 января 2017"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginStart="3dp"
-            />
+                    android:layout_marginStart="3dp"/>
 
             <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/image_heart"
@@ -85,8 +83,7 @@
                     app:srcCompat="@drawable/ic_heart"
                     android:layout_alignEnd="@+id/tv_description"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginBottom="12dp"
-            />
+                    android:layout_marginBottom="12dp"/>
 
         </RelativeLayout>
 

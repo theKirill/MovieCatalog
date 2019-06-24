@@ -5,12 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
+import com.example.moviecatalog.App
 import com.example.moviecatalog.R
 import com.example.moviecatalog.domain.Movie
 import com.example.moviecatalog.utils.OnClickListener
 import kotlinx.android.synthetic.main.card_view.view.*
+import javax.inject.Inject
 
-class MoviesAdapter(private var movies: ArrayList<Movie>, private val clickListener: OnClickListener) : RecyclerView.Adapter<MoviesAdapter.ViewHolder>() {
+class MoviesAdapter(private var movies: ArrayList<Movie>, private val clickListener: OnClickListener) :
+    RecyclerView.Adapter<MoviesAdapter.ViewHolder>() {
 
     /*init of ViewHolder*/
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder = ViewHolder(
@@ -56,14 +59,22 @@ class MoviesAdapter(private var movies: ArrayList<Movie>, private val clickListe
             itemView.tv_title.text = movie.getTitle
         }
 
-        private fun setPoster(movie: Movie) = Glide.with(itemView.cv_movie).load(movie.getPosterURL).into(itemView.image_poster)
+        private fun setPoster(movie: Movie) =
+            Glide.with(itemView.cv_movie).load(movie.getPosterURL).into(itemView.image_poster)
 
         private fun setDescription(movie: Movie) {
             itemView.tv_description.text = movie.getDescription
         }
 
         private fun setDate(movie: Movie) {
-            itemView.tv_date.text = movie.getDate
+            val date = movie.getDate
+
+            if (date.isNotEmpty()) {
+                itemView.tv_date.text = date
+            } else {
+                itemView.image_calendar.visibility = View.GONE
+                itemView.tv_date.visibility = View.GONE
+            }
         }
 
         private fun setLike(movie: Movie) {

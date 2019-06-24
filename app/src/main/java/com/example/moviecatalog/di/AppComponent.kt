@@ -1,6 +1,6 @@
 package com.example.moviecatalog.di
 
-import com.example.moviecatalog.MainActivity
+import com.example.moviecatalog.activity.MainActivity
 import dagger.Component
 import javax.inject.Singleton
 

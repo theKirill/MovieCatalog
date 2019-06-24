@@ -1,11 +1,17 @@
-package com.example.moviecatalog
+package com.example.moviecatalog.activity
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.view.KeyEvent
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.LinearLayout
+import com.example.moviecatalog.App
+import com.example.moviecatalog.R
 import com.example.moviecatalog.adapters.MoviesAdapter
 import com.example.moviecatalog.domain.Movie
 import com.example.moviecatalog.network.MoviesResponse
@@ -34,11 +40,34 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(toolbar)
 
+        initSwipeRefreshListener()
+
         initRecyclerView()
 
-        initSwipeRefreshListener()
-        showProgress()
         getMovies()
+
+        et_search.setOnKeyListener(object : View.OnKeyListener {
+            override fun onKey(v: View?, keyCode: Int, event: KeyEvent?): Boolean {
+                if ((event!!.action == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+
+                    hideKeyboard()
+
+                    /*get data*/
+                    page = 1
+
+                    val query = et_search.text.toString()
+
+                    if (query.isNotEmpty())
+                        getNecessaryMovies(query)
+                    else
+                        getMovies()
+
+                    return true
+                }
+
+                return false
+            }
+        })
     }
 
     private fun initSwipeRefreshListener() {
@@ -50,24 +79,45 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun showProgress() {
+    private fun showMainProgress() {
         if (!layout_swipe.isRefreshing)
             layout_pb.visibility = View.VISIBLE
     }
 
-    private fun hideProgress() {
+    private fun hideMainProgress() {
         layout_swipe.isRefreshing = false
-        layout_pb.visibility = View.INVISIBLE
+        layout_pb.visibility = View.GONE
+    }
+
+    private fun showSearchProgress() {
+        progress_horizontal.visibility = View.VISIBLE
+    }
+
+    private fun hideSearchProgress() {
+        progress_horizontal.visibility = View.GONE
     }
 
     private fun showErrorLayout() {
         layout_error.visibility = View.VISIBLE
     }
 
+    private fun hideKeyboard() {
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(et_search.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+        rv_movies.requestFocus()
+    }
+
+    private fun showSnackBar(message: String) {
+        val sbError = MySnackBar(layout_main, message)
+        sbError.show(this@MainActivity)
+    }
+
     private fun initAdapter() {
         /*Create adapter with listener of click on element*/
         adapter = MoviesAdapter(movies, object : OnClickListener {
             override fun onCardViewClick(position: Int) {
+                hideKeyboard()
+
                 showSnackBar(movies[position].getTitle)
             }
         })
@@ -96,28 +146,33 @@ class MainActivity : AppCompatActivity() {
                 val positionOfFirstVisibleItem =
                     layoutManagerForRV.findFirstVisibleItemPosition()//position of the 1st element
 
-                if (!isLoading /*&& isHasInternet*/) {
-                    if ((visibleItemsCount + positionOfFirstVisibleItem) >= totalItemsCount) {
-                        page++
-                        getMovies()
-                    }
+                if (!isLoading && ((visibleItemsCount + positionOfFirstVisibleItem) >= totalItemsCount)) {
+                    /* if () {
+                         page++
+                         //getMovies()
+                     }*/
                 }
             }
         })
-        hideProgress()
+        hideMainProgress()
     }
 
     private fun getMovies() {
+        isLoading = true
+        showMainProgress()
+
         repository.getMovies(object : ResponseCallback<MoviesResponse> {
 
             override fun onError() {
-                hideProgress()
+                hideMainProgress()
                 showErrorLayout()
 
                 showSnackBar(getString(R.string.errorSnack))
             }
 
             override fun onSuccess(apiResponse: MoviesResponse) {
+                layout_nothing_found.visibility = View.GONE
+
                 if (page == 1)
                     movies = ArrayList()
 
@@ -127,24 +182,52 @@ class MainActivity : AppCompatActivity() {
 
                 if (page == 1) {
                     adapter.setItems(movies)
-                }
-                else {
-                    /*don`t move to top of the RV, because we add data to end*/
+                    rv_movies.adapter = adapter
+                } else {
                     adapter.addItems()
                 }
 
-                //initAdapter()
-                rv_movies.adapter = adapter
-
-                hideProgress()
-
-                progress_horizontal.visibility = View.VISIBLE
+                hideMainProgress()
+                isLoading = false
             }
         }, page)
     }
 
-    private fun showSnackBar(message: String) {
-        val sbError = MySnackBar(layout_main, message)
-        sbError.show(this@MainActivity)
+    private fun getNecessaryMovies(query: String) {
+        isLoading = true
+        showMainProgress()
+
+        repository.getNecessaryMovies(object : ResponseCallback<MoviesResponse> {
+
+            override fun onError() {
+                hideMainProgress()
+                showErrorLayout()
+
+                showSnackBar(getString(R.string.errorSnack))
+            }
+
+            @SuppressLint("SetTextI18n")
+            override fun onSuccess(apiResponse: MoviesResponse) {
+                layout_nothing_found.visibility = View.GONE
+                movies = ArrayList()
+
+                if (apiResponse.movies.isEmpty()) {
+                    layout_nothing_found.visibility = View.VISIBLE
+                    tv_nothing_found.text = "По запросу \"$query\" ничего не найдено"
+                } else {
+
+                    apiResponse.movies.forEach {
+                        movies.add(it.transform())
+                    }
+
+                    adapter.setItems(movies)
+
+                    rv_movies.adapter = adapter
+                    isLoading = false
+                }
+
+                hideMainProgress()
+            }
+        }, query)
     }
 }
