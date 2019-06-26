@@ -23,15 +23,11 @@ class MoviesAdapter(private var movies: ArrayList<Movie>, private val clickListe
     override fun getItemCount(): Int = movies.size
 
     /*full data for each element of RV*/
-    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) = viewHolder.bind(position)
+    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int): Unit = viewHolder.bind(position)
 
     fun setItems(movies: ArrayList<Movie>) {
         this.movies = movies
         notifyDataSetChanged()
-    }
-
-    fun addItems() {
-        notifyItemInserted(movies.size - 1)
     }
 
     inner class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
@@ -78,7 +74,7 @@ class MoviesAdapter(private var movies: ArrayList<Movie>, private val clickListe
         private fun setLike(movie: Movie) {
             /*check for ID in shared pref and set like*/
             var imageHeart =
-                if (itemView.context.getPreferences().check(movie.getId))
+                if (itemView.context.getPreferences().hasLike(movie.getId))
                     R.drawable.ic_heart_fill
                 else
                     R.drawable.ic_heart

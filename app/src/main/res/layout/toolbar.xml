@@ -27,12 +27,12 @@
                 android:inputType="text"/>
 
         <ProgressBar
-                android:id="@+id/progressSearch"
+                android:id="@+id/progress_search"
                 style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="4dp"
                 android:indeterminate="true"
-                android:indeterminateTint="@color/colorWhite"
+                android:indeterminateDrawable="@drawable/progressbar_horizontal"
                 android:visibility="invisible"/>
 
     </LinearLayout>

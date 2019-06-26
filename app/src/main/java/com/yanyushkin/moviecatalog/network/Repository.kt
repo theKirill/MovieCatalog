@@ -13,9 +13,7 @@ class Repository @Inject constructor(private val moviesApi: MoviesApi) {
 
         /*async data acquisition*/
         moviesApi.getAllMovies().enqueue(object : Callback<MoviesResponse> {
-            override fun onFailure(call: Call<MoviesResponse>, t: Throwable) {
-                responseCallback.onError()
-            }
+            override fun onFailure(call: Call<MoviesResponse>, t: Throwable): Unit = responseCallback.onError()
 
             override fun onResponse(call: Call<MoviesResponse>, response: Response<MoviesResponse>) {
                 if (response.isSuccessful) {
@@ -29,12 +27,10 @@ class Repository @Inject constructor(private val moviesApi: MoviesApi) {
         })
     }
 
-    fun getNecessaryMovies(responseCallback: ResponseCallback<MoviesResponse>, query: String){
+    fun getNecessaryMovies(responseCallback: ResponseCallback<MoviesResponse>, query: String) {
 
         moviesApi.getNecessaryMovies(query).enqueue(object : Callback<MoviesResponse> {
-            override fun onFailure(call: Call<MoviesResponse>, t: Throwable) {
-                responseCallback.onError()
-            }
+            override fun onFailure(call: Call<MoviesResponse>, t: Throwable): Unit = responseCallback.onError()
 
             override fun onResponse(call: Call<MoviesResponse>, response: Response<MoviesResponse>) {
                 if (response.isSuccessful) {

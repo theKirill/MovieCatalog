@@ -1,41 +1,38 @@
 package com.yanyushkin.moviecatalog.activity
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.KeyEvent
 import android.view.View
-import android.view.inputmethod.InputMethodManager
 import android.widget.LinearLayout
-import com.yanyushkin.moviecatalog.App
-import com.yanyushkin.moviecatalog.R
+import com.yanyushkin.moviecatalog.*
 import com.yanyushkin.moviecatalog.adapter.MoviesAdapter
 import com.yanyushkin.moviecatalog.domain.Movie
-import com.yanyushkin.moviecatalog.network.MoviesResponse
 import com.yanyushkin.moviecatalog.network.Repository
-import com.yanyushkin.moviecatalog.network.ResponseCallback
-import com.yanyushkin.moviecatalog.utils.MySnackBar
+import com.yanyushkin.moviecatalog.presenter.MoviesPresenter
 import com.yanyushkin.moviecatalog.utils.OnClickListener
+import com.yanyushkin.moviecatalog.view.MainView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar.*
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), MainView {
+
     @Inject
     lateinit var repository: Repository
+    @Inject
+    lateinit var presenter: MoviesPresenter
     private var movies: ArrayList<Movie> = ArrayList()
     private lateinit var adapter: MoviesAdapter
-    private var isLoading = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        /*get repository with dagger*/
-        (application as App).getAppComponent().injectsMainActivity(this)
+        /*get repository and presenter with dagger*/
+        App.component.injectsMainActivity(this)
 
         setSupportActionBar(toolbar)
 
@@ -43,7 +40,8 @@ class MainActivity : AppCompatActivity() {
 
         initRecyclerView()
 
-        getMovies()
+        presenter.attach(this)
+        presenter.loadData()
 
         et_search.setOnKeyListener(object : View.OnKeyListener {
             override fun onKey(v: View?, keyCode: Int, event: KeyEvent?): Boolean {
@@ -54,9 +52,9 @@ class MainActivity : AppCompatActivity() {
                     val query = et_search.text.toString()
 
                     if (query.isNotEmpty())
-                        getNecessaryMovies(query)
+                        presenter.searchData(query)
                     else
-                        getMovies()
+                        presenter.loadData()
 
                     return true
                 }
@@ -64,47 +62,24 @@ class MainActivity : AppCompatActivity() {
                 return false
             }
         })
+
+        button_update.setOnClickListener {
+            val query = et_search.text.toString()
+
+            if (query.isNotEmpty())
+                presenter.searchData(query)
+            else
+                presenter.loadData()
+        }
     }
+
 
     private fun initSwipeRefreshListener() {
         layout_swipe.setColorSchemeResources(R.color.colorElectricBlue)
         layout_swipe.setOnRefreshListener {
             movies = ArrayList()
-            // initData()
+            presenter.refreshData()
         }
-    }
-
-    private fun showMainProgress() {
-        if (!layout_swipe.isRefreshing)
-            layout_pb.visibility = View.VISIBLE
-    }
-
-    private fun hideMainProgress() {
-        layout_swipe.isRefreshing = false
-        layout_pb.visibility = View.GONE
-    }
-
-    private fun showSearchProgress() {
-        //progress_horizontal.visibility = View.VISIBLE
-    }
-
-    private fun hideSearchProgress() {
-        //progress_horizontal.visibility = View.GONE
-    }
-
-    private fun showErrorLayout() {
-        layout_error.visibility = View.VISIBLE
-    }
-
-    private fun hideKeyboard() {
-        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(et_search.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
-        rv_movies.requestFocus()
-    }
-
-    private fun showSnackBar(message: String) {
-        val sbError = MySnackBar(layout_main, message)
-        sbError.show(this@MainActivity)
     }
 
     private fun initAdapter() {
@@ -130,77 +105,46 @@ class MainActivity : AppCompatActivity() {
             initAdapter()
             rv_movies.adapter = adapter
         }
-
-        hideMainProgress()
     }
 
-    private fun getMovies() {
-        isLoading = true
-        showMainProgress()
+    override fun hasContent(): Boolean = movies.size > 0
 
-        repository.getMovies(object : ResponseCallback<MoviesResponse> {
+    override fun showLoading(): Unit = layout_pb.show()
 
-            override fun onError() {
-                hideMainProgress()
-                showErrorLayout()
-
-                showSnackBar(getString(R.string.errorSnack))
-            }
-
-            override fun onSuccess(apiResponse: MoviesResponse) {
-                layout_nothing_found.visibility = View.GONE
-
-                movies = ArrayList()
-
-                apiResponse.movies.forEach {
-                    movies.add(it.transform())
-                }
-
-                adapter.setItems(movies)
-                rv_movies.adapter = adapter
-
-                hideMainProgress()
-                isLoading = false
-            }
-        })
+    override fun hideLoading() {
+        layout_pb.hide()
+        container_data.show()
     }
 
-    private fun getNecessaryMovies(query: String) {
-        isLoading = true
-        showMainProgress()
-        progressSearch.visibility=View.VISIBLE
+    override fun hideRefreshing() {
+        layout_swipe.isRefreshing = false
+    }
 
-        repository.getNecessaryMovies(object : ResponseCallback<MoviesResponse> {
+    override fun setMovies(movies: ArrayList<Movie>) {
+        hideLoading()
+        layout_error.hide()
+        this.movies = movies
+        adapter.setItems(this.movies)
+        rv_movies.adapter = adapter
+    }
 
-            override fun onError() {
-                hideMainProgress()
-                showErrorLayout()
+    override fun showNoInternetSnackbar(): Unit = showSnackBar(getString(R.string.errorSnack))
 
-                showSnackBar(getString(R.string.errorSnack))
-            }
+    override fun showErrorLayout() {
+        layout_pb.hide()
+        container_data.hide()
+        layout_error.show()
+    }
 
-            @SuppressLint("SetTextI18n")
-            override fun onSuccess(apiResponse: MoviesResponse) {
-                layout_nothing_found.visibility = View.GONE
-                movies = ArrayList()
+    override fun showSearchLoading(): Unit = progress_search.show()
 
-                if (apiResponse.movies.isEmpty()) {
-                    layout_nothing_found.visibility = View.VISIBLE
-                    tv_nothing_found.text = "По запросу \"$query\" ничего не найдено"
-                } else {
+    override fun hideSearchLoading(): Unit = progress_search.hide()
 
-                    apiResponse.movies.forEach {
-                        movies.add(it.transform())
-                    }
-
-                    adapter.setItems(movies)
-
-                    rv_movies.adapter = adapter
-                    isLoading = false
-                }
-
-                hideMainProgress()
-            }
-        }, query)
+    @SuppressLint("SetTextI18n")
+    override fun showNothingFoundLayout(query: String) {
+        container_data.hide()
+        layout_nothing_found.show()
+        tv_nothing_found.text =
+            "${getString(R.string.notFoundFirstPart)}\"$query\"${getString(R.string.notFoundSecondPart)}"
     }
 }
