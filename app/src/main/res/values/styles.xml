@@ -43,6 +43,7 @@
     <style name="ProgressBarHorizontal" parent="@style/Widget.AppCompat.ProgressBar.Horizontal">
         <item name="android:progressBackgroundTint">@color/colorElectricBlue</item>
         <item name="android:indeterminateTint">@color/colorWhite</item>
+        <item name="android:indeterminate">true</item>
     </style>
 
 </resources>

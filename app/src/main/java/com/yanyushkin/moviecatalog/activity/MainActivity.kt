@@ -1,4 +1,4 @@
-package com.example.moviecatalog.activity
+package com.yanyushkin.moviecatalog.activity
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -10,15 +10,15 @@ import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.LinearLayout
-import com.example.moviecatalog.App
-import com.example.moviecatalog.R
-import com.example.moviecatalog.adapters.MoviesAdapter
-import com.example.moviecatalog.domain.Movie
-import com.example.moviecatalog.network.MoviesResponse
-import com.example.moviecatalog.network.Repository
-import com.example.moviecatalog.network.ResponseCallback
-import com.example.moviecatalog.utils.MySnackBar
-import com.example.moviecatalog.utils.OnClickListener
+import com.yanyushkin.moviecatalog.App
+import com.yanyushkin.moviecatalog.R
+import com.yanyushkin.moviecatalog.adapter.MoviesAdapter
+import com.yanyushkin.moviecatalog.domain.Movie
+import com.yanyushkin.moviecatalog.network.MoviesResponse
+import com.yanyushkin.moviecatalog.network.Repository
+import com.yanyushkin.moviecatalog.network.ResponseCallback
+import com.yanyushkin.moviecatalog.utils.MySnackBar
+import com.yanyushkin.moviecatalog.utils.OnClickListener
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar.*
 import javax.inject.Inject
@@ -28,7 +28,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var repository: Repository
     private var movies: ArrayList<Movie> = ArrayList()
     private lateinit var adapter: MoviesAdapter
-    private var page = 1
     private var isLoading = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,9 +51,6 @@ class MainActivity : AppCompatActivity() {
 
                     hideKeyboard()
 
-                    /*get data*/
-                    page = 1
-
                     val query = et_search.text.toString()
 
                     if (query.isNotEmpty())
@@ -74,7 +70,6 @@ class MainActivity : AppCompatActivity() {
         layout_swipe.setColorSchemeResources(R.color.colorElectricBlue)
         layout_swipe.setOnRefreshListener {
             movies = ArrayList()
-            page = 1
             // initData()
         }
     }
@@ -90,11 +85,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showSearchProgress() {
-        progress_horizontal.visibility = View.VISIBLE
+        //progress_horizontal.visibility = View.VISIBLE
     }
 
     private fun hideSearchProgress() {
-        progress_horizontal.visibility = View.GONE
+        //progress_horizontal.visibility = View.GONE
     }
 
     private fun showErrorLayout() {
@@ -136,24 +131,6 @@ class MainActivity : AppCompatActivity() {
             rv_movies.adapter = adapter
         }
 
-        /*listener of the end of the list (add data, new request from the next page)*/
-        rv_movies.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-
-                val visibleItemsCount = layoutManagerForRV.childCount//how many elements on the screen
-                val totalItemsCount = layoutManagerForRV.itemCount//how many elements total
-                val positionOfFirstVisibleItem =
-                    layoutManagerForRV.findFirstVisibleItemPosition()//position of the 1st element
-
-                if (!isLoading && ((visibleItemsCount + positionOfFirstVisibleItem) >= totalItemsCount)) {
-                    /* if () {
-                         page++
-                         //getMovies()
-                     }*/
-                }
-            }
-        })
         hideMainProgress()
     }
 
@@ -173,29 +150,25 @@ class MainActivity : AppCompatActivity() {
             override fun onSuccess(apiResponse: MoviesResponse) {
                 layout_nothing_found.visibility = View.GONE
 
-                if (page == 1)
-                    movies = ArrayList()
+                movies = ArrayList()
 
                 apiResponse.movies.forEach {
                     movies.add(it.transform())
                 }
 
-                if (page == 1) {
-                    adapter.setItems(movies)
-                    rv_movies.adapter = adapter
-                } else {
-                    adapter.addItems()
-                }
+                adapter.setItems(movies)
+                rv_movies.adapter = adapter
 
                 hideMainProgress()
                 isLoading = false
             }
-        }, page)
+        })
     }
 
     private fun getNecessaryMovies(query: String) {
         isLoading = true
         showMainProgress()
+        progressSearch.visibility=View.VISIBLE
 
         repository.getNecessaryMovies(object : ResponseCallback<MoviesResponse> {
 

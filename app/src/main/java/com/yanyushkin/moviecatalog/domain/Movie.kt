@@ -1,4 +1,4 @@
-package com.example.moviecatalog.domain
+package com.yanyushkin.moviecatalog.domain
 
 class Movie(
     private val id: Int,
@@ -7,6 +7,8 @@ class Movie(
     private val description: String,
     private val date: String
 ) {
+    var like: Boolean = false
+
     val getId: Int
         get() = id
 

@@ -1,9 +1,8 @@
-package com.example.moviecatalog
+package com.yanyushkin.moviecatalog
 
 import android.app.Application
-import com.example.moviecatalog.di.AppComponent
-import com.example.moviecatalog.di.DaggerAppComponent
-import com.example.moviecatalog.di.NetworkModule
+import com.yanyushkin.moviecatalog.di.AppComponent
+import com.yanyushkin.moviecatalog.di.DaggerAppComponent
 
 class App : Application() {
     lateinit var component: AppComponent

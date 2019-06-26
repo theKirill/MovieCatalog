@@ -1,4 +1,4 @@
-package com.example.moviecatalog
+package com.yanyushkin.moviecatalog
 
 import org.junit.Test
 

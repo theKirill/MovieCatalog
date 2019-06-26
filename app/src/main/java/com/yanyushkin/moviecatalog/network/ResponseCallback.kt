@@ -1,4 +1,4 @@
-package com.example.moviecatalog.network
+package com.yanyushkin.moviecatalog.network
 
 interface ResponseCallback<R> {
 

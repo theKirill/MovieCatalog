@@ -1,11 +1,11 @@
-package com.example.moviecatalog.utils
+package com.yanyushkin.moviecatalog.utils
 
 import android.content.Context
 import android.support.design.widget.Snackbar
 import android.support.v4.content.ContextCompat
 import android.view.View
 import android.widget.TextView
-import com.example.moviecatalog.R
+import com.yanyushkin.moviecatalog.R
 
 class MySnackBar(v: View, message:String) {
     private val sb: Snackbar

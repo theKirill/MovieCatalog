@@ -1,9 +1,9 @@
-package com.example.moviecatalog.network
+package com.yanyushkin.moviecatalog.network
 
-import com.example.moviecatalog.domain.Movie
-import com.example.moviecatalog.translateDate
-import com.example.moviecatalog.translatePosterURL
 import com.google.gson.annotations.SerializedName
+import com.yanyushkin.moviecatalog.domain.Movie
+import com.yanyushkin.moviecatalog.translateDate
+import com.yanyushkin.moviecatalog.translatePosterURL
 
 data class MoviesResponse(
     @SerializedName("results")

@@ -1,6 +1,10 @@
-package com.example.moviecatalog
+package com.yanyushkin.moviecatalog
 
+import android.content.Context
+import android.content.SharedPreferences
 import java.util.*
+
+private const val APP_PREFERENCES_KEY = "settings"
 
 fun translateDate(badDate: String): String {
     if (badDate.isEmpty())
@@ -30,7 +34,15 @@ fun translateDate(badDate: String): String {
 
 fun translatePosterURL(img: String?): String {
 
-    img?.let { return "https://image.tmdb.org/t/p/w500/"+img.substring(1) }
+    img?.let { return "https://image.tmdb.org/t/p/w500/" + img.substring(1) }
 
     return ""
 }
+
+fun Context.getPreferences(): SharedPreferences = getSharedPreferences(APP_PREFERENCES_KEY, Context.MODE_PRIVATE)
+
+fun SharedPreferences.check(id: Int) = contains(id.toString())
+
+fun SharedPreferences.saveId(id: Int): Unit = edit().putInt(id.toString(), id).apply()
+
+fun SharedPreferences.removeId(id: Int): Unit = edit().remove(id.toString()).apply()

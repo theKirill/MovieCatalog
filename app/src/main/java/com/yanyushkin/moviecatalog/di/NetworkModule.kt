@@ -1,9 +1,9 @@
-package com.example.moviecatalog.di
+package com.yanyushkin.moviecatalog.di
 
-import com.example.moviecatalog.BuildConfig
-import com.example.moviecatalog.network.BASE_URL
-import com.example.moviecatalog.network.MoviesApi
-import com.example.moviecatalog.network.Repository
+import com.yanyushkin.moviecatalog.BuildConfig
+import com.yanyushkin.moviecatalog.network.BASE_URL
+import com.yanyushkin.moviecatalog.network.MoviesApi
+import com.yanyushkin.moviecatalog.network.Repository
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient

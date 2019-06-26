@@ -1,4 +1,4 @@
-package com.example.moviecatalog.utils
+package com.yanyushkin.moviecatalog.utils
 
 interface OnClickListener {
     fun onCardViewClick(position: Int)

@@ -1,16 +1,14 @@
-package com.example.moviecatalog.adapters
+package com.yanyushkin.moviecatalog.adapter
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
-import com.example.moviecatalog.App
-import com.example.moviecatalog.R
-import com.example.moviecatalog.domain.Movie
-import com.example.moviecatalog.utils.OnClickListener
+import com.yanyushkin.moviecatalog.*
+import com.yanyushkin.moviecatalog.domain.Movie
+import com.yanyushkin.moviecatalog.utils.OnClickListener
 import kotlinx.android.synthetic.main.card_view.view.*
-import javax.inject.Inject
 
 class MoviesAdapter(private var movies: ArrayList<Movie>, private val clickListener: OnClickListener) :
     RecyclerView.Adapter<MoviesAdapter.ViewHolder>() {
@@ -78,8 +76,29 @@ class MoviesAdapter(private var movies: ArrayList<Movie>, private val clickListe
         }
 
         private fun setLike(movie: Movie) {
+            /*check for ID in shared pref and set like*/
+            var imageHeart =
+                if (itemView.context.getPreferences().check(movie.getId))
+                    R.drawable.ic_heart_fill
+                else
+                    R.drawable.ic_heart
+
+            movie.like = imageHeart == R.drawable.ic_heart_fill
+
+            itemView.image_heart.setImageResource(imageHeart)
+
             itemView.image_heart.setOnClickListener {
-                itemView.image_heart.setImageResource(R.drawable.ic_heart_fill)
+                if (movie.like) {
+                    imageHeart = R.drawable.ic_heart
+                    movie.like = false
+                    itemView.context.getPreferences().removeId(movie.getId)
+                } else {
+                    imageHeart = R.drawable.ic_heart_fill
+                    movie.like = true
+                    itemView.context.getPreferences().saveId(movie.getId)
+                }
+
+                itemView.image_heart.setImageResource(imageHeart)
             }
         }
     }
