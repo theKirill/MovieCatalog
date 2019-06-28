@@ -18,6 +18,7 @@
             android:layout_marginTop="8dp">
 
         <RelativeLayout
+                android:id="@+id/layout_main_cv"
                 android:layout_width="match_parent"
                 android:layout_height="183dp">
 

@@ -63,24 +63,27 @@ class MoviesPresenter : Presenter, LoadingListener {
         }
     }
 
+    /*successful load/search data*/
     override fun onLoadingSuccess(screenState: ScreenState, movies: ArrayList<Movie>) {
-        mainView.setMovies(movies)
-
         hideProgress(screenState)
+
+        mainView.setMovies(movies)
     }
 
+    /*empty search result*/
     override fun onLoadingSuccessEmpty(query: String) {
-        mainView.showNothingFoundLayout(query)
-
         hideProgress(ScreenState.Searching)
+
+        mainView.showNothingFoundLayout(query)
     }
 
+    /*error load/search data*/
     override fun onLoadingError(screenState: ScreenState) {
+        hideProgress(screenState)
+
         when (screenState) {
             ScreenState.Loading, ScreenState.Searching -> if (!mainView.hasContent()) mainView.showErrorLayout() else mainView.showNoInternetSnackbar()
-            ScreenState.Refreshing -> mainView.hideRefreshing()
+            ScreenState.Refreshing -> mainView.showNoInternetSnackbar()
         }
-
-        hideProgress(screenState)
     }
 }

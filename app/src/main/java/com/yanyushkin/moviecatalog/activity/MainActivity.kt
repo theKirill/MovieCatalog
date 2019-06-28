@@ -109,40 +109,50 @@ class MainActivity : AppCompatActivity(), MainView {
 
     override fun hasContent(): Boolean = movies.size > 0
 
-    override fun showLoading(): Unit = layout_pb.show()
-
-    override fun hideLoading() {
-        layout_pb.hide()
-        container_data.show()
+    override fun showLoading() {
+        layout_error.hide()
+        layout_nothing_found.hide()
+        container_data.hide()
+        layout_pb.show()
     }
+
+    override fun hideLoading(): Unit = layout_pb.hide()
 
     override fun hideRefreshing() {
         layout_swipe.isRefreshing = false
     }
 
     override fun setMovies(movies: ArrayList<Movie>) {
-        hideLoading()
-        layout_error.hide()
         this.movies = movies
         adapter.setItems(this.movies)
         rv_movies.adapter = adapter
+        container_data.show()
     }
 
-    override fun showNoInternetSnackbar(): Unit = showSnackBar(getString(R.string.errorSnack))
+    override fun showNoInternetSnackbar() {
+        container_data.show()
+        showSnackBar(getString(R.string.errorSnack))
+    }
 
     override fun showErrorLayout() {
         layout_pb.hide()
+        layout_nothing_found.hide()
         container_data.hide()
         layout_error.show()
     }
 
-    override fun showSearchLoading(): Unit = progress_search.show()
+    override fun showSearchLoading() {
+        layout_error.hide()
+        layout_nothing_found.hide()
+        layout_pb.hide()
+        container_data.hide()
+        progress_search.show()
+    }
 
     override fun hideSearchLoading(): Unit = progress_search.hide()
 
     @SuppressLint("SetTextI18n")
     override fun showNothingFoundLayout(query: String) {
-        container_data.hide()
         layout_nothing_found.show()
         tv_nothing_found.text =
             "${getString(R.string.notFoundFirstPart)}\"$query\"${getString(R.string.notFoundSecondPart)}"

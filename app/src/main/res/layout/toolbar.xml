@@ -10,6 +10,7 @@
         android:focusableInTouchMode="true">
 
     <LinearLayout
+            android:id="@+id/layout_main_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -28,12 +29,10 @@
 
         <ProgressBar
                 android:id="@+id/progress_search"
-                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                style="@style/ProgressBarHorizontal"
                 android:layout_width="match_parent"
-                android:layout_height="4dp"
-                android:indeterminate="true"
-                android:indeterminateDrawable="@drawable/progressbar_horizontal"
-                android:visibility="invisible"/>
+                android:layout_height="20dp"
+                android:visibility="visible"/>
 
     </LinearLayout>
 

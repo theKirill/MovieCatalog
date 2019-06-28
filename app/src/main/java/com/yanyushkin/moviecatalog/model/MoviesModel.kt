@@ -43,7 +43,6 @@ class MoviesModel(private val presenter: MoviesPresenter) : Model {
 
             override fun onError() = presenter.onLoadingError(screenState)
 
-
             override fun onSuccess(apiResponse: MoviesResponse) {
                 val movies = ArrayList<Movie>()
 
