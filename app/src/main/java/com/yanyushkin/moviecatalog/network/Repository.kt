@@ -29,6 +29,7 @@ class Repository @Inject constructor(private val moviesApi: MoviesApi) {
 
     fun getNecessaryMovies(responseCallback: ResponseCallback<MoviesResponse>, query: String) {
 
+        /*async data acquisition*/
         moviesApi.getNecessaryMovies(query).enqueue(object : Callback<MoviesResponse> {
             override fun onFailure(call: Call<MoviesResponse>, t: Throwable): Unit = responseCallback.onError()
 

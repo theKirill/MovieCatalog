@@ -101,7 +101,7 @@
                 android:layout_height="match_parent"
                 android:background="@color/colorGrey"
                 android:layout_marginTop="60dp"
-                android:visibility="visible">
+                android:visibility="invisible">
 
             <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/image_no_data"
@@ -139,8 +139,7 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_centerInParent="true"
-                    android:indeterminateTintMode="src_atop"
-                    android:indeterminateTint="@color/colorElectricBlue"/>
+                    style="@style/MainProgressBar"/>
 
         </RelativeLayout>
 

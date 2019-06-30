@@ -13,6 +13,7 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
+
         component = DaggerAppComponent.builder()
             .networkModule(NetworkModule())
             .presenterModule(PresenterModule())

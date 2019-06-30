@@ -53,6 +53,7 @@ class MoviesAdapter(private var movies: ArrayList<Movie>, private val clickListe
             itemView.tv_title.text = movie.getTitle
         }
 
+
         private fun setPoster(movie: Movie) =
             Glide.with(itemView.cv_movie).load(movie.getPosterURL).into(itemView.image_poster)
 

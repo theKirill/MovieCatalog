@@ -1,5 +1,8 @@
 package com.yanyushkin.moviecatalog.model
 
+import android.arch.lifecycle.LiveData
+import android.arch.lifecycle.MutableLiveData
+import android.arch.lifecycle.ViewModel
 import com.yanyushkin.moviecatalog.App
 import com.yanyushkin.moviecatalog.domain.Movie
 import com.yanyushkin.moviecatalog.network.MoviesResponse
@@ -10,13 +13,24 @@ import com.yanyushkin.moviecatalog.presenter.ScreenState
 import java.util.ArrayList
 import javax.inject.Inject
 
-class MoviesModel(private val presenter: MoviesPresenter) : Model {
+class MoviesModel(private val presenter: MoviesPresenter) : Model, ViewModel() {
 
     @Inject
     lateinit var repository: Repository
+    private lateinit var movies: MutableLiveData<ArrayList<Movie>>
 
     init {
         App.component.injectsMoviesModel(this)
+
+        if (!::movies.isInitialized) {
+            movies = MutableLiveData()
+        }
+    }
+
+    fun getMovies(): LiveData<ArrayList<Movie>> = movies
+
+    fun clearMovies(){
+        movies = MutableLiveData()
     }
 
     override fun loadMovies(screenState: ScreenState) {
@@ -25,13 +39,15 @@ class MoviesModel(private val presenter: MoviesPresenter) : Model {
             override fun onError() = presenter.onLoadingError(screenState)
 
             override fun onSuccess(apiResponse: MoviesResponse) {
-                val movies = ArrayList<Movie>()
+                val moviesFromServer = ArrayList<Movie>()
 
                 apiResponse.movies.forEach {
-                    movies.add(it.transform())
+                    moviesFromServer.add(it.transform())
                 }
 
-                presenter.onLoadingSuccess(screenState, movies)
+                movies.value = moviesFromServer
+
+                presenter.onLoadingSuccess(screenState, movies.value!!)
             }
         })
     }
@@ -44,17 +60,18 @@ class MoviesModel(private val presenter: MoviesPresenter) : Model {
             override fun onError() = presenter.onLoadingError(screenState)
 
             override fun onSuccess(apiResponse: MoviesResponse) {
-                val movies = ArrayList<Movie>()
+                val moviesFromServer = ArrayList<Movie>()
 
                 if (apiResponse.movies.isEmpty()) {
                     presenter.onLoadingSuccessEmpty(query)
                 } else {
                     apiResponse.movies.forEach {
-                        movies.add(it.transform())
+                        moviesFromServer.add(it.transform())
                     }
                 }
 
-                presenter.onLoadingSuccess(screenState, movies)
+                movies.value = moviesFromServer
+                presenter.onLoadingSuccess(screenState, movies.value!!)
             }
         }, query)
     }

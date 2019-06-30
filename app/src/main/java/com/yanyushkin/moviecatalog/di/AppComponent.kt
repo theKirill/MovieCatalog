@@ -11,6 +11,6 @@ import javax.inject.Singleton
 interface AppComponent {
 
     fun injectsMainActivity(mainActivity: MainActivity)
-    fun injectsMoviesPresenter(presenter: MoviesPresenter)
+
     fun injectsMoviesModel(moviesModel: MoviesModel)
 }

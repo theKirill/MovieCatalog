@@ -8,6 +8,7 @@ import android.widget.TextView
 import com.yanyushkin.moviecatalog.R
 
 class MySnackBar(v: View, message:String) {
+
     private val sb: Snackbar
     private val snackbarView: View
 

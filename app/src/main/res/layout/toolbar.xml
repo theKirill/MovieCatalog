@@ -2,11 +2,13 @@
 <android.support.v7.widget.Toolbar
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/toolbar"
         android:background="@color/colorGrey"
         app:contentInsetStart="0dp"
         android:descendantFocusability="beforeDescendants"
+        android:elevation="3dp"
         android:focusableInTouchMode="true">
 
     <LinearLayout
@@ -20,19 +22,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:hint="@string/search"
+                android:fontFamily="sans-serif"
+                android:textSize="15sp"
+                android:lineSpacingExtra="5sp"
+                android:textStyle="normal"
                 android:drawableStart="@drawable/ic_search"
                 android:drawablePadding="27.5dp"
                 android:paddingStart="19dp"
                 android:background="@drawable/rounded_edittext"
-                android:layout_margin="8dp"
-                android:inputType="text"/>
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:inputType="text"
+                android:imeOptions="actionSearch"/>
 
         <ProgressBar
                 android:id="@+id/progress_search"
                 style="@style/ProgressBarHorizontal"
                 android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:visibility="visible"/>
+                android:layout_height="15dp"
+                android:visibility="invisible"/>
 
     </LinearLayout>
 

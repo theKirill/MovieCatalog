@@ -1,4 +1,4 @@
-package com.yanyushkin.moviecatalog.utils
+package com.yanyushkin.moviecatalog.presenter
 
 import com.yanyushkin.moviecatalog.domain.Movie
 import com.yanyushkin.moviecatalog.presenter.ScreenState

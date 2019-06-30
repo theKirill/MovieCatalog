@@ -10,7 +10,6 @@ import android.widget.LinearLayout
 import com.yanyushkin.moviecatalog.*
 import com.yanyushkin.moviecatalog.adapter.MoviesAdapter
 import com.yanyushkin.moviecatalog.domain.Movie
-import com.yanyushkin.moviecatalog.network.Repository
 import com.yanyushkin.moviecatalog.presenter.MoviesPresenter
 import com.yanyushkin.moviecatalog.utils.OnClickListener
 import com.yanyushkin.moviecatalog.view.MainView
@@ -21,18 +20,20 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity(), MainView {
 
     @Inject
-    lateinit var repository: Repository
-    @Inject
     lateinit var presenter: MoviesPresenter
     private var movies: ArrayList<Movie> = ArrayList()
     private lateinit var adapter: MoviesAdapter
+    private var rotationScreen = false
+    private val ROTATION_KEY = "rotation"
+    private val SCROLL_POSITION_KEY = "position"
+    private var positionOfFirstVisibleItem = 0
+    private var TEXT_SEARCH_KEY = "text"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        /*get repository and presenter with dagger*/
-        App.component.injectsMainActivity(this)
+        App.component.injectsMainActivity(this)//get presenter with dagger
 
         setSupportActionBar(toolbar)
 
@@ -41,44 +42,72 @@ class MainActivity : AppCompatActivity(), MainView {
         initRecyclerView()
 
         presenter.attach(this)
-        presenter.loadData()
 
-        et_search.setOnKeyListener(object : View.OnKeyListener {
-            override fun onKey(v: View?, keyCode: Int, event: KeyEvent?): Boolean {
-                if ((event!!.action == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+        if (savedInstanceState != null) {
+            et_search.setText(savedInstanceState.getString(TEXT_SEARCH_KEY))
 
-                    hideKeyboard()
+            /**
+             * after screen rotation load saved movies by the ViewModel
+             */
+            if (savedInstanceState.containsKey(ROTATION_KEY) && savedInstanceState.getBoolean(ROTATION_KEY)) {
+                positionOfFirstVisibleItem =
+                    savedInstanceState.getInt(SCROLL_POSITION_KEY) //look where we stopped before the change of orientation
 
-                    val query = et_search.text.toString()
+                val query = et_search.text.toString()
 
-                    if (query.isNotEmpty())
-                        presenter.searchData(query)
-                    else
-                        presenter.loadData()
-
-                    return true
-                }
-
-                return false
+                if (container_data.visibility != View.VISIBLE)
+                    presenter.searchData(query)
+                else
+                    presenter.loadDataAfterRotationScreen()
+            } else {
+                loadOrSearchData()
             }
-        })
-
-        button_update.setOnClickListener {
-            val query = et_search.text.toString()
-
-            if (query.isNotEmpty())
-                presenter.searchData(query)
-            else
-                presenter.loadData()
+        } else {
+            loadOrSearchData()
         }
+
+        initKeyListenerOnKeyBoard()
+
+        initButtonUpdateClickListener()
     }
 
+    override fun onSaveInstanceState(outState: Bundle?) {
+        super.onSaveInstanceState(outState)
+
+        if (movies.size > 0) {
+            rotationScreen = true
+
+            /**
+             * remember the screen rotation
+             */
+            outState?.let {
+                outState.clear()
+                outState.putBoolean(ROTATION_KEY, rotationScreen)
+
+                val layoutManagerForRV = rv_movies.layoutManager as LinearLayoutManager
+                outState.putInt(SCROLL_POSITION_KEY, layoutManagerForRV.findFirstVisibleItemPosition())
+            }
+        }
+
+        /**
+         * remember text of search
+         */
+        outState?.let { outState.putString(TEXT_SEARCH_KEY, et_search.text.toString()) }
+    }
 
     private fun initSwipeRefreshListener() {
         layout_swipe.setColorSchemeResources(R.color.colorElectricBlue)
+
         layout_swipe.setOnRefreshListener {
+            positionOfFirstVisibleItem = 0
             movies = ArrayList()
-            presenter.refreshData()
+
+            if (layout_nothing_found.visibility != View.VISIBLE && layout_error.visibility != View.VISIBLE) {
+                et_search.setText("")
+                presenter.refreshData()
+            } else {
+                hideRefreshing()
+            }
         }
     }
 
@@ -107,7 +136,43 @@ class MainActivity : AppCompatActivity(), MainView {
         }
     }
 
-    override fun hasContent(): Boolean = movies.size > 0
+    private fun initKeyListenerOnKeyBoard() {
+        et_search.setOnKeyListener(object : View.OnKeyListener {
+            override fun onKey(v: View?, keyCode: Int, event: KeyEvent?): Boolean {
+                event?.let {
+                    if ((event.action == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER || keyCode == KeyEvent.KEYCODE_BACK)) {
+
+                        hideKeyboard()
+
+                        positionOfFirstVisibleItem = 0
+
+                        loadOrSearchData()
+
+                        return true
+                    }
+                }
+
+                return false
+            }
+        })
+    }
+
+    private fun initButtonUpdateClickListener() {
+        button_update.setOnClickListener {
+            positionOfFirstVisibleItem = 0
+
+            loadOrSearchData()
+        }
+    }
+
+    private fun loadOrSearchData() {
+        val query = et_search.text.toString()
+
+        if (query.isNotEmpty())
+            presenter.searchData(query)
+        else
+            presenter.loadData()
+    }
 
     override fun showLoading() {
         layout_error.hide()
@@ -126,10 +191,12 @@ class MainActivity : AppCompatActivity(), MainView {
         this.movies = movies
         adapter.setItems(this.movies)
         rv_movies.adapter = adapter
+        rv_movies.scrollToPosition(positionOfFirstVisibleItem)
+
         container_data.show()
     }
 
-    override fun showNoInternetSnackbar() {
+    override fun showNoInternetSnackBar() {
         container_data.show()
         showSnackBar(getString(R.string.errorSnack))
     }
@@ -149,12 +216,12 @@ class MainActivity : AppCompatActivity(), MainView {
         progress_search.show()
     }
 
-    override fun hideSearchLoading(): Unit = progress_search.hide()
+    override fun hideSearchLoading(): Unit = progress_search.makeInvisible()
 
     @SuppressLint("SetTextI18n")
     override fun showNothingFoundLayout(query: String) {
         layout_nothing_found.show()
         tv_nothing_found.text =
-            "${getString(R.string.notFoundFirstPart)}\"$query\"${getString(R.string.notFoundSecondPart)}"
+            "${getString(R.string.notFoundFirstPart)} \"$query\" ${getString(R.string.notFoundSecondPart)}"
     }
 }

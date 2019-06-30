@@ -2,14 +2,11 @@ package com.yanyushkin.moviecatalog
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.support.v4.content.ContextCompat.getSystemService
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.Toast
 import com.yanyushkin.moviecatalog.utils.MySnackBar
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.toolbar.*
 import java.util.*
 
@@ -48,17 +45,32 @@ fun translatePosterURL(img: String?): String {
     return ""
 }
 
-/*for work with shared preferences (check like of movie)*/
+/**
+ * for work with shared preferences
+ */
 fun Context.getPreferences(): SharedPreferences = getSharedPreferences(APP_PREFERENCES_KEY, Context.MODE_PRIVATE)
 
+/**
+ * check like of movie by id
+ */
 fun SharedPreferences.hasLike(id: Int) = contains(id.toString())
 
+/**
+ * save id of movie
+ */
 fun SharedPreferences.saveId(id: Int): Unit = edit().putInt(id.toString(), id).apply()
 
+/**
+ * remove id of movie
+ */
 fun SharedPreferences.removeId(id: Int): Unit = edit().remove(id.toString()).apply()
 
 fun View.show() {
     visibility = View.VISIBLE
+}
+
+fun View.makeInvisible() {
+    visibility = View.INVISIBLE
 }
 
 fun View.hide() {

@@ -26,36 +26,17 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/presenter/MoviesPresenter.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="521">
-              <caret line="84" column="139" selection-start-line="84" selection-start-column="139" selection-end-line="84" selection-end-column="139" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/activity/MainActivity.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-91">
-              <caret line="118" column="55" lean-forward="true" selection-start-line="118" selection-start-column="55" selection-end-line="118" selection-end-column="55" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Kotlin File" />
         <option value="Kotlin Object" />
         <option value="Kotlin Enum" />
         <option value="Kotlin Class" />
-        <option value="Kotlin Interface" />
         <option value="resourceFile" />
+        <option value="Kotlin Interface" />
+        <option value="Kotlin File" />
       </list>
     </option>
   </component>
@@ -64,8 +45,11 @@
       <find>Settings</find>
       <find>hideRe</find>
       <find>hasC</find>
-      <find>hasContent</find>
       <find>hideRefreshing</find>
+      <find>60</find>
+      <find>БЛЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯ</find>
+      <find>hasContent</find>
+      <find>query</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -73,49 +57,54 @@
       <list>
         <option value="$PROJECT_DIR$/gradle.properties" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/utils/OnClickListener.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/utils/MySnackbar.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/network/MoviesApi.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/network/ResponseCallback.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/di/NetworkModule.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/network/MoviesResponse.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/viewmodel/BaseViewModelFactory.kt" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/utils/SharedPref.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/domain/Movie.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/presenter/ScreenState.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/viewmodel/MoviesViewModel.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/di/PresenterModule.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/presenter/Presenter.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/model/Model.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/LoadingListener.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/adapter/MoviesAdapter.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/network/Repository.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/view/MainView.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/view/ContentView.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/view/SearchingView.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/progressbar.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/progressbar_horizontal.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/di/AppComponent.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/App.kt" />
         <option value="$PROJECT_DIR$/../FilmViewer-master/app/src/main/java/com/margarita/filmviewer/mvp/presenter/MoviesPresenter.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/presenter/MoviesPresenter.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/Tools.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/model/MoviesModel.kt" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/card_view.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/network/Repository.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/adapter/MoviesAdapter.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/view/SearchingView.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/view/ContentView.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/di/PerScreen.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/presenter/Presenter.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/presenter/LoadingListener.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/di/NetworkModule.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/network/MoviesApi.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/utils/MySnackBar.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/utils/OnClickListener.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/toolbar.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/Tools.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/di/PresenterComponent.kt" />
+        <option value="$PROJECT_DIR$/../KudaGo/app/src/main/java/com/yanyushkin/kudago/activities/MainActivity.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/model/BaseViewModelFactory.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/di/PresenterModule.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/di/AppComponent.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/App.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/view/MainView.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/model/MoviesModel.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/presenter/MoviesPresenter.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/activity/MainActivity.kt" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="99" />
-    <option name="y" value="45" />
-    <option name="width" value="1647" />
+    <option name="x" value="288" />
+    <option name="width" value="1453" />
     <option name="height" value="1050" />
   </component>
   <component name="ProjectView">
@@ -124,7 +113,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
+      <pane id="ProjectPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -142,41 +131,6 @@
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="moviecatalog" type="cbb59c9e:AndroidPsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MovieCatalog2" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="moviecatalog" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="activity" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MovieCatalog2" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="moviecatalog" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="adapter" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MovieCatalog2" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="moviecatalog" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MovieCatalog2" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="moviecatalog" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="network" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MovieCatalog2" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="moviecatalog" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="presenter" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MovieCatalog2" type="1abcf292:AndroidViewProjectNode" />
@@ -203,32 +157,34 @@
           <select />
         </subPane>
       </pane>
-      <pane id="ProjectPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="device.picker.selection" value="1f0e807" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../FilmViewer-master/app/src/main/java/com/margarita/filmviewer/mvp/presenter/MoviesPresenter.kt" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Фильмы/MovieCatalog/MovieCatalog/app/src/main/java/com/yanyushkin/moviecatalog/App.kt" />
     <property name="not.eligible.for.single.variant.sync" value="true" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.XML" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\1\AndroidStudioProjects\MovieCatalog2\app\src\main\res\drawable" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.yanyushkin.moviecatalog" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="com.yanyushkin.moviecatalog.presenter" />
       <recent name="com.yanyushkin.moviecatalog.utils" />
       <recent name="com.yanyushkin.moviecatalog.mvp" />
       <recent name="com.yanyushkin.moviecatalog.activity" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\1\AndroidStudioProjects\MovieCatalog2\app\src\main\res\layout" />
-    </key>
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
       <recent name="com.yanyushkin.moviecatalog.viewmodel" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\1\AndroidStudioProjects\MovieCatalog2\app\src\main\res\drawable" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\1\AndroidStudioProjects\MovieCatalog2\app\src\main\res\layout" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -319,11 +275,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="99" y="45" width="1647" height="1050" extended-state="0" />
-    <editor active="true" />
+    <frame x="288" y="0" width="1453" height="1050" extended-state="0" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.13673598" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.23689878" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Build Variants" order="3" side_tool="true" />
       <window_info id="Image Layers" order="4" />
@@ -335,10 +290,10 @@
       <window_info anchor="bottom" id="TODO" order="1" />
       <window_info anchor="bottom" id="Terminal" order="2" />
       <window_info anchor="bottom" id="Event Log" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="Build" order="4" visible="true" weight="0.24645583" />
-      <window_info anchor="bottom" id="Run" order="5" weight="0.281909" />
+      <window_info anchor="bottom" id="Build" order="4" weight="0.24536532" />
+      <window_info anchor="bottom" id="Run" order="5" weight="0.34460196" />
       <window_info anchor="bottom" id="Logcat" order="6" />
-      <window_info anchor="bottom" id="Android Profiler" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Android Profiler" order="7" />
       <window_info anchor="bottom" id="Debug" order="8" />
       <window_info anchor="bottom" id="Find" order="9" weight="0.32963374" />
       <window_info anchor="right" id="Capture Analysis" order="0" />
@@ -346,25 +301,10 @@
       <window_info anchor="right" id="Theme Preview" order="2" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info anchor="right" id="Device File Explorer" order="4" side_tool="true" />
-      <window_info anchor="right" id="Preview" order="5" weight="0.43289226" />
+      <window_info anchor="right" id="Preview" order="5" weight="0.4321608" />
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/gradle.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="31" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/viewmodel/BaseViewModelFactory.kt" />
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
@@ -380,52 +320,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/utils/SharedPref.kt" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/utils/OnClickListener.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/network/MoviesApi.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="1" lean-forward="true" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
-          <folding>
-            <element signature="e#45#120#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/domain/Movie.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="9" column="29" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/di/PresenterModule.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="22" lean-forward="true" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/di/NetworkModule.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="44" column="53" lean-forward="true" selection-start-line="44" selection-start-column="53" selection-end-line="44" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/viewmodel/MoviesViewModel.kt" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/model/Model.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="34" lean-forward="true" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../FilmViewer-master/app/src/main/java/com/margarita/filmviewer/ui/activities/MainActivity.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -437,86 +332,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="138" column="5" lean-forward="true" selection-start-line="138" selection-start-column="5" selection-end-line="138" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/network/MoviesResponse.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="24" column="25" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/network/Repository.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="15" column="111" selection-start-line="15" selection-start-column="111" selection-end-line="15" selection-end-column="111" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/network/ResponseCallback.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="1" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/presenter/ScreenState.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="8" lean-forward="true" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/utils/MySnackBar.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="26" column="17" lean-forward="true" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/view/MainView.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-          <folding>
-            <element signature="e#42#150#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/presenter/Presenter.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/utils/LoadingListener.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="8" column="50" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/view/ContentView.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/view/SearchingView.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="45" selection-start-line="12" selection-start-column="45" selection-end-line="12" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../KudaGo/app/src/main/java/com/yanyushkin/kudago/activities/MainActivity.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="214" column="33" lean-forward="true" selection-start-line="214" selection-start-column="33" selection-end-line="214" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -534,16 +349,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/di/AppComponent.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-          <folding>
-            <element signature="e#40#264#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/progressbar_horizontal.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -554,26 +359,9 @@
     <entry file="file://$PROJECT_DIR$/../KudaGo/app/src/main/java/com/yanyushkin/kudago/App.kt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/App.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="48" selection-start-line="15" selection-start-column="48" selection-end-line="15" selection-end-column="48" />
-          <folding>
-            <element signature="e#37#281#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../FilmViewer-master/app/src/main/res/layout/activity_main.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-328" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="511">
-          <caret line="46" column="12" lean-forward="true" selection-start-line="46" selection-start-column="12" selection-end-line="46" selection-end-column="12" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../FilmViewer-master/app/src/main/java/com/margarita/filmviewer/mvp/presenter/MoviesPresenter.kt">
@@ -583,65 +371,311 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/Tools.kt">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/domain/Movie.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="76" column="1" selection-start-line="76" selection-start-column="1" selection-end-line="76" selection-end-column="1" />
+        <state relative-caret-position="142">
+          <caret line="9" column="29" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/adapter/MoviesAdapter.kt">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/network/MoviesApi.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="76" column="30" lean-forward="true" selection-start-line="76" selection-start-column="30" selection-end-line="76" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/model/MoviesModel.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        <state relative-caret-position="170">
+          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
           <folding>
-            <element signature="e#43#473#0" expanded="true" />
+            <element signature="e#45#120#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/network/MoviesResponse.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="24" column="25" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/network/Repository.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="42" column="17" lean-forward="true" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/network/ResponseCallback.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="1" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/presenter/LoadingListener.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="8" column="49" selection-start-line="8" selection-start-column="49" selection-end-line="8" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/presenter/Presenter.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="34" selection-start-line="6" selection-start-column="34" selection-end-line="6" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/presenter/ScreenState.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="8" lean-forward="true" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/utils/MySnackBar.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/utils/OnClickListener.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/view/ContentView.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/view/SearchingView.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/card_view.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
+        <state relative-caret-position="-867">
           <caret line="21" column="49" lean-forward="true" selection-start-line="21" selection-start-column="49" selection-end-line="21" selection-end-column="49" />
         </state>
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="12" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/adapter/MoviesAdapter.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="29" column="30" lean-forward="true" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/model/Model.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="34" lean-forward="true" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build/tmp/kapt3/stubs/debug/com/yanyushkin/moviecatalog/di/AppComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../KudaGo/app/src/main/java/com/yanyushkin/kudago/activities/MainActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="191" column="72" lean-forward="true" selection-start-line="191" selection-start-column="8" selection-end-line="191" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/Tools.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="72" column="31" selection-start-line="72" selection-start-column="31" selection-end-line="72" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/di/PerScreen.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/model/BaseViewModelFactory.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+          <folding>
+            <element signature="e#43#130#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../KudaGo/app/src/main/java/com/yanyushkin/kudago/viewmodels/BaseViewModelFactory.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="9" column="39" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../KudaGo/app/src/main/java/com/yanyushkin/kudago/viewmodels/CitiesViewModel.kt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../KudaGo/app/src/main/java/com/yanyushkin/kudago/activities/CitiesListActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1462">
+          <caret line="108" column="57" selection-start-line="108" selection-start-column="57" selection-end-line="108" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/di/PresenterComponent.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+          <folding>
+            <element signature="e#40#123#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Фильмы/MovieCatalog/MovieCatalog/app/src/main/java/com/yanyushkin/moviecatalog/di/NetworkModule.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="23" column="23" lean-forward="true" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Фильмы/MovieCatalog/MovieCatalog/app/src/main/java/com/yanyushkin/moviecatalog/di/PresenterModule.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="13" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Фильмы/MovieCatalog/MovieCatalog/app/src/main/java/com/yanyushkin/moviecatalog/di/AppComponent.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Фильмы/MovieCatalog/MovieCatalog/app/src/main/java/com/yanyushkin/moviecatalog/App.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="20" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/di/NetworkModule.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="478">
+          <caret line="45" column="83" selection-start-line="45" selection-start-column="83" selection-end-line="45" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/di/AppComponent.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/di/PresenterModule.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <element signature="e#40#174#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/App.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="10" column="15" selection-start-line="10" selection-start-column="15" selection-end-line="10" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/toolbar.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="37" selection-start-line="37" selection-end-line="37" />
+        <state relative-caret-position="187">
+          <caret line="20" column="43" lean-forward="true" selection-start-line="20" selection-start-column="43" selection-end-line="20" selection-end-column="43" />
         </state>
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/view/MainView.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="472">
-          <caret line="148" column="14" selection-start-line="148" selection-start-column="14" selection-end-line="148" selection-end-column="14" />
+        <state relative-caret-position="85">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/model/MoviesModel.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/presenter/MoviesPresenter.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="521">
-          <caret line="84" column="139" selection-start-line="84" selection-start-column="139" selection-end-line="84" selection-end-column="139" />
+        <state relative-caret-position="808">
+          <caret line="100" column="9" selection-start-line="100" selection-start-column="9" selection-end-line="100" selection-end-column="9" />
+          <folding>
+            <element signature="e#47#223#0" expanded="true" />
+            <element signature="e#555#595#0" />
+            <element signature="e#896#999#0" />
+          </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="37" column="36" selection-start-line="37" selection-start-column="36" selection-end-line="37" selection-end-column="36" />
+          <folding>
+            <element signature="e#1527#1567#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/activity/MainActivity.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-91">
-          <caret line="118" column="55" lean-forward="true" selection-start-line="118" selection-start-column="55" selection-end-line="118" selection-end-column="55" />
+        <state relative-caret-position="244">
+          <caret line="58" column="47" selection-start-line="58" selection-start-column="47" selection-end-line="58" selection-end-column="47" />
+          <folding>
+            <element signature="e#46#792#0" expanded="true" />
+            <element signature="e#2226#2871#0" />
+            <element signature="e#2916#3185#0" />
+            <element signature="e#3217#3523#0" />
+            <element signature="e#3560#3918#0" />
+            <element signature="e#4490#5290#0" />
+            <element signature="e#5340#5629#0" />
+            <element signature="e#4009#4135#0" />
+            <element signature="e#4228#4277#0" />
+            <element signature="e#4332#4536#0" />
+            <element signature="e#4580#4670#0" />
+            <element signature="e#4707#4833#0" />
+            <element signature="e#4872#5029#0" />
+            <element signature="e#5197#5380#0" />
+          </folding>
         </state>
       </provider>
     </entry>
