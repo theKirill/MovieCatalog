@@ -27,12 +27,6 @@ class MoviesModel(private val presenter: MoviesPresenter) : Model, ViewModel() {
         }
     }
 
-    fun getMovies(): LiveData<ArrayList<Movie>> = movies
-
-    fun clearMovies(){
-        movies = MutableLiveData()
-    }
-
     override fun loadMovies(screenState: ScreenState) {
         repository.getMovies(object : ResponseCallback<MoviesResponse> {
 
@@ -62,17 +56,23 @@ class MoviesModel(private val presenter: MoviesPresenter) : Model, ViewModel() {
             override fun onSuccess(apiResponse: MoviesResponse) {
                 val moviesFromServer = ArrayList<Movie>()
 
-                if (apiResponse.movies.isEmpty()) {
+                if (apiResponse.movies.isEmpty())
                     presenter.onLoadingSuccessEmpty(query)
-                } else {
+                else
                     apiResponse.movies.forEach {
                         moviesFromServer.add(it.transform())
                     }
-                }
 
                 movies.value = moviesFromServer
+
                 presenter.onLoadingSuccess(screenState, movies.value!!)
             }
         }, query)
+    }
+
+    fun getMovies(): LiveData<ArrayList<Movie>> = movies
+
+    fun clearMovies() {
+        movies = MutableLiveData()
     }
 }

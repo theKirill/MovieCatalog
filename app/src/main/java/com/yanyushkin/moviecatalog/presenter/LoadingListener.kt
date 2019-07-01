@@ -7,6 +7,8 @@ import java.util.ArrayList
 interface LoadingListener {
 
     fun onLoadingSuccess(screenState: ScreenState, movies: ArrayList<Movie>)
+
     fun onLoadingSuccessEmpty(query: String)
+
     fun onLoadingError(screenState: ScreenState)
 }

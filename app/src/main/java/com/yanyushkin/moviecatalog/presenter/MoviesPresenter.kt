@@ -11,9 +11,8 @@ class MoviesPresenter : Presenter, LoadingListener {
     private lateinit var model: MoviesModel
 
     init {
-        if (!::model.isInitialized) {
+        if (!::model.isInitialized)
             model = MoviesModel(this)
-        }
     }
 
     /**
@@ -21,6 +20,46 @@ class MoviesPresenter : Presenter, LoadingListener {
      */
     override fun attach(mainView: MainView) {
         this.mainView = mainView
+    }
+
+    /**
+     * successful load/refresh/search data
+     */
+    override fun onLoadingSuccess(screenState: ScreenState, movies: ArrayList<Movie>) {
+        hideProgress(screenState)
+
+        mainView.setMovies(movies)
+    }
+
+    /**
+     * empty search result
+     */
+    override fun onLoadingSuccessEmpty(query: String) {
+        hideProgress(ScreenState.Searching)
+
+        model.clearMovies()
+
+        mainView.showNothingFoundLayout(query)
+    }
+
+    /**
+     * error load/refresh/search data
+     */
+    override fun onLoadingError(screenState: ScreenState) {
+        hideProgress(screenState)
+
+        when (screenState) {
+            ScreenState.Loading, ScreenState.Searching -> {
+                if (model.getMovies().value == null || model.getMovies().value!!.size == 0)
+                    mainView.showErrorLayout()
+                else
+                    mainView.showNoInternetSnackBar()
+            }
+
+            ScreenState.Refreshing -> {
+                mainView.showNoInternetSnackBar()
+            }
+        }
     }
 
     fun loadData() = getMovies(ScreenState.Loading)
@@ -66,38 +105,6 @@ class MoviesPresenter : Presenter, LoadingListener {
             ScreenState.Loading -> mainView.hideLoading()
             ScreenState.Searching -> mainView.hideSearchLoading()
             ScreenState.Refreshing -> mainView.hideRefreshing()
-        }
-    }
-
-    /**
-     * successful load/refresh/search data
-     */
-    override fun onLoadingSuccess(screenState: ScreenState, movies: ArrayList<Movie>) {
-        hideProgress(screenState)
-
-        mainView.setMovies(movies)
-    }
-
-    /**
-     * empty search result
-     */
-    override fun onLoadingSuccessEmpty(query: String) {
-        hideProgress(ScreenState.Searching)
-
-        model.clearMovies()
-
-        mainView.showNothingFoundLayout(query)
-    }
-
-    /**
-     * error load/refresh/search data
-     */
-    override fun onLoadingError(screenState: ScreenState) {
-        hideProgress(screenState)
-
-        when (screenState) {
-            ScreenState.Loading, ScreenState.Searching -> if (model.getMovies().value == null || model.getMovies().value!!.size == 0) mainView.showErrorLayout() else mainView.showNoInternetSnackBar()
-            ScreenState.Refreshing -> mainView.showNoInternetSnackBar()
         }
     }
 }

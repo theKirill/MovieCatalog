@@ -10,9 +10,9 @@ import javax.inject.Singleton
 class Repository @Inject constructor(private val moviesApi: MoviesApi) {
 
     fun getMovies(responseCallback: ResponseCallback<MoviesResponse>) {
-
         /*async data acquisition*/
         moviesApi.getAllMovies().enqueue(object : Callback<MoviesResponse> {
+
             override fun onFailure(call: Call<MoviesResponse>, t: Throwable): Unit = responseCallback.onError()
 
             override fun onResponse(call: Call<MoviesResponse>, response: Response<MoviesResponse>) {
@@ -28,9 +28,9 @@ class Repository @Inject constructor(private val moviesApi: MoviesApi) {
     }
 
     fun getNecessaryMovies(responseCallback: ResponseCallback<MoviesResponse>, query: String) {
-
         /*async data acquisition*/
         moviesApi.getNecessaryMovies(query).enqueue(object : Callback<MoviesResponse> {
+
             override fun onFailure(call: Call<MoviesResponse>, t: Throwable): Unit = responseCallback.onError()
 
             override fun onResponse(call: Call<MoviesResponse>, response: Response<MoviesResponse>) {

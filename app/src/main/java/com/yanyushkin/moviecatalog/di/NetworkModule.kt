@@ -35,7 +35,6 @@ class NetworkModule {
         .client(okHttpClient)
         .build()
 
-
     @Singleton
     @Provides
     fun provideEventsApi(retrofit: Retrofit): MoviesApi = retrofit.create(MoviesApi::class.java)

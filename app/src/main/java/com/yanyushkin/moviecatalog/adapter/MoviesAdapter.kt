@@ -13,7 +13,9 @@ import kotlinx.android.synthetic.main.card_view.view.*
 class MoviesAdapter(private var movies: ArrayList<Movie>, private val clickListener: OnClickListener) :
     RecyclerView.Adapter<MoviesAdapter.ViewHolder>() {
 
-    /*init of ViewHolder*/
+    /**
+     * init of ViewHolder
+     */
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder = ViewHolder(
         LayoutInflater.from(viewGroup.context).inflate(
             R.layout.card_view, viewGroup, false
@@ -22,7 +24,9 @@ class MoviesAdapter(private var movies: ArrayList<Movie>, private val clickListe
 
     override fun getItemCount(): Int = movies.size
 
-    /*full data for each element of RV*/
+    /**
+     * full data for each element of RV
+     */
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int): Unit = viewHolder.bind(position)
 
     fun setItems(movies: ArrayList<Movie>) {
@@ -52,7 +56,6 @@ class MoviesAdapter(private var movies: ArrayList<Movie>, private val clickListe
         private fun setTitle(movie: Movie) {
             itemView.tv_title.text = movie.getTitle
         }
-
 
         private fun setPoster(movie: Movie) =
             Glide.with(itemView.cv_movie).load(movie.getPosterURL).into(itemView.image_poster)
@@ -87,13 +90,13 @@ class MoviesAdapter(private var movies: ArrayList<Movie>, private val clickListe
             itemView.image_heart.setOnClickListener {
                 if (movie.like) {
                     imageHeart = R.drawable.ic_heart
-                    movie.like = false
                     itemView.context.getPreferences().removeId(movie.getId)
                 } else {
                     imageHeart = R.drawable.ic_heart_fill
-                    movie.like = true
                     itemView.context.getPreferences().saveId(movie.getId)
                 }
+
+                movie.like = imageHeart == R.drawable.ic_heart_fill
 
                 itemView.image_heart.setImageResource(imageHeart)
             }
