@@ -9,6 +9,7 @@ class MoviesPresenter : Presenter, LoadingListener {
 
     private lateinit var mainView: MainView
     private lateinit var model: MoviesModel
+    private var error = false
 
     init {
         if (!::model.isInitialized)
@@ -27,6 +28,10 @@ class MoviesPresenter : Presenter, LoadingListener {
      */
     override fun onLoadingSuccess(screenState: ScreenState, movies: ArrayList<Movie>) {
         hideProgress(screenState)
+        error = false
+
+        if (screenState == ScreenState.Refreshing)
+            mainView.clearSearchString()
 
         mainView.setMovies(movies)
     }
@@ -36,6 +41,7 @@ class MoviesPresenter : Presenter, LoadingListener {
      */
     override fun onLoadingSuccessEmpty(query: String) {
         hideProgress(ScreenState.Searching)
+        error = false
 
         model.clearMovies()
 
@@ -47,13 +53,16 @@ class MoviesPresenter : Presenter, LoadingListener {
      */
     override fun onLoadingError(screenState: ScreenState) {
         hideProgress(screenState)
+        error = false
 
         when (screenState) {
             ScreenState.Loading, ScreenState.Searching -> {
-                if (model.getMovies().value == null || model.getMovies().value!!.size == 0)
+                if (model.getMovies().value == null || model.getMovies().value!!.size == 0) {
                     mainView.showErrorLayout()
-                else
+                    error = true
+                } else {
                     mainView.showNoInternetSnackBar()
+                }
             }
 
             ScreenState.Refreshing -> {
@@ -64,7 +73,7 @@ class MoviesPresenter : Presenter, LoadingListener {
 
     fun loadData() = getMovies(ScreenState.Loading)
 
-    fun loadDataAfterRotationScreen() = getMoviesAfterRotationScreen()
+    fun loadDataAfterRotationScreen(query: String) = getMoviesAfterRotationScreen(query)
 
     fun refreshData() = getMovies(ScreenState.Refreshing)
 
@@ -79,11 +88,15 @@ class MoviesPresenter : Presenter, LoadingListener {
     /**
      * get saved movies from model
      */
-    private fun getMoviesAfterRotationScreen() {
-        if (model.getMovies().value!!.size > 0)
-            mainView.setMovies(model.getMovies().value!!)
-        else
-            loadData()
+    private fun getMoviesAfterRotationScreen(query: String) {
+        if (!error) {
+            if (model.getMovies().value != null && model.getMovies().value!!.size > 0)
+                mainView.setMovies(model.getMovies().value!!)
+            else
+                onLoadingSuccessEmpty(query)
+        } else {
+            onLoadingError(ScreenState.Loading)
+        }
     }
 
     private fun getNecessaryMovies(query: String) {

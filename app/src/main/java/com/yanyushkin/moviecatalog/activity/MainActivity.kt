@@ -53,12 +53,12 @@ class MainActivity : AppCompatActivity(), MainView {
                 positionOfFirstVisibleItem =
                     savedInstanceState.getInt(SCROLL_POSITION_KEY) //look where we stopped before the change of orientation
 
-                val query = et_search.text.toString()
+                /*val query =
 
                 if (container_data.visibility != View.VISIBLE)
                     presenter.searchData(query)
-                else
-                    presenter.loadDataAfterRotationScreen()
+                else*/
+                presenter.loadDataAfterRotationScreen(et_search.text.toString())
             } else {
                 loadOrSearchData()
             }
@@ -146,19 +146,19 @@ class MainActivity : AppCompatActivity(), MainView {
             "${getString(R.string.notFoundFirstPart)} \"$query\" ${getString(R.string.notFoundSecondPart)}"
     }
 
+    override fun clearSearchString(): Unit = et_search.setText("")
+
     private fun initSwipeRefreshListener() {
         layout_swipe.setColorSchemeResources(R.color.colorElectricBlue)
 
         layout_swipe.setOnRefreshListener {
             positionOfFirstVisibleItem = 0
-            movies = ArrayList()
+            //movies = ArrayList()
 
-            if (layout_nothing_found.visibility != View.VISIBLE && layout_error.visibility != View.VISIBLE) {
-                et_search.setText("")
+            if (layout_nothing_found.visibility != View.VISIBLE && layout_error.visibility != View.VISIBLE)
                 presenter.refreshData()
-            } else {
+            else
                 hideRefreshing()
-            }
         }
     }
 

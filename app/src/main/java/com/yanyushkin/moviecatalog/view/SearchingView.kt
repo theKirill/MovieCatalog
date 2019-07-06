@@ -13,4 +13,6 @@ interface SearchingView {
     fun hideSearchLoading()
 
     fun showNothingFoundLayout(query: String)
+
+    fun clearSearchString()
 }
