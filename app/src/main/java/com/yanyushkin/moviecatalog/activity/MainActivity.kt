@@ -53,11 +53,6 @@ class MainActivity : AppCompatActivity(), MainView {
                 positionOfFirstVisibleItem =
                     savedInstanceState.getInt(SCROLL_POSITION_KEY) //look where we stopped before the change of orientation
 
-                /*val query =
-
-                if (container_data.visibility != View.VISIBLE)
-                    presenter.searchData(query)
-                else*/
                 presenter.loadDataAfterRotationScreen(et_search.text.toString())
             } else {
                 loadOrSearchData()
@@ -153,7 +148,6 @@ class MainActivity : AppCompatActivity(), MainView {
 
         layout_swipe.setOnRefreshListener {
             positionOfFirstVisibleItem = 0
-            //movies = ArrayList()
 
             if (layout_nothing_found.visibility != View.VISIBLE && layout_error.visibility != View.VISIBLE)
                 presenter.refreshData()
