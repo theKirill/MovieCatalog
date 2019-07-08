@@ -69,21 +69,30 @@ class MoviesPresenter : Presenter, LoadingListener {
             ScreenState.Refreshing -> {
                 mainView.showNoInternetSnackBar()
             }
+
+            ScreenState.AdditionalLoading -> {
+                mainView.showUpdateButton()
+            }
         }
     }
 
-    fun loadData() = getMovies(ScreenState.Loading)
+    fun loadData(page: Int) {
+        if (page == 1)
+            getMovies(ScreenState.Loading, page)
+        else
+            getMovies(ScreenState.AdditionalLoading, page)
+    }
 
-    fun loadDataAfterRotationScreen(query: String) = getMoviesAfterRotationScreen(query)
+    fun loadDataAfterRotationScreen(query: String): Unit = getMoviesAfterRotationScreen(query)
 
-    fun refreshData() = getMovies(ScreenState.Refreshing)
+    fun refreshData(page: Int): Unit = getMovies(ScreenState.Refreshing, page)
 
-    fun searchData(query: String) = getNecessaryMovies(query)
+    fun searchData(query: String): Unit = getNecessaryMovies(query)
 
-    private fun getMovies(screenState: ScreenState) {
+    private fun getMovies(screenState: ScreenState, page: Int) {
         showProgress(screenState)
 
-        model.loadMovies(screenState)//get movies from model
+        model.loadMovies(screenState, page)//get movies from model
     }
 
     /**
@@ -110,6 +119,7 @@ class MoviesPresenter : Presenter, LoadingListener {
         when (screenState) {
             ScreenState.Loading -> mainView.showLoading()
             ScreenState.Searching -> mainView.showSearchLoading()
+            ScreenState.AdditionalLoading -> mainView.showAdditionalLoading()
             else -> return
         }
     }
@@ -119,6 +129,7 @@ class MoviesPresenter : Presenter, LoadingListener {
             ScreenState.Loading -> mainView.hideLoading()
             ScreenState.Searching -> mainView.hideSearchLoading()
             ScreenState.Refreshing -> mainView.hideRefreshing()
+            ScreenState.AdditionalLoading -> mainView.hideAdditionalLoading()
         }
     }
 }

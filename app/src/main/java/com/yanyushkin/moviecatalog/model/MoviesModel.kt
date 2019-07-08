@@ -27,10 +27,10 @@ class MoviesModel(private val presenter: MoviesPresenter) : Model, ViewModel() {
         }
     }
 
-    override fun loadMovies(screenState: ScreenState) {
+    override fun loadMovies(screenState: ScreenState, page: Int) {
         repository.getMovies(object : ResponseCallback<MoviesResponse> {
 
-            override fun onError() = presenter.onLoadingError(screenState)
+            override fun onError(): Unit = presenter.onLoadingError(screenState)
 
             override fun onSuccess(apiResponse: MoviesResponse) {
                 val moviesFromServer = ArrayList<Movie>()
@@ -39,11 +39,16 @@ class MoviesModel(private val presenter: MoviesPresenter) : Model, ViewModel() {
                     moviesFromServer.add(it.transform())
                 }
 
-                movies.value = moviesFromServer
+                if (page == 1)
+                    movies.value = moviesFromServer
+                else
+                    moviesFromServer.forEach {
+                        movies.value!!.add(it)
+                    }
 
                 presenter.onLoadingSuccess(screenState, movies.value!!)
             }
-        })
+        }, page)
     }
 
     override fun searchMovies(query: String) {
@@ -51,7 +56,7 @@ class MoviesModel(private val presenter: MoviesPresenter) : Model, ViewModel() {
 
         repository.getNecessaryMovies(object : ResponseCallback<MoviesResponse> {
 
-            override fun onError() = presenter.onLoadingError(screenState)
+            override fun onError(): Unit = presenter.onLoadingError(screenState)
 
             override fun onSuccess(apiResponse: MoviesResponse) {
                 val moviesFromServer = ArrayList<Movie>()

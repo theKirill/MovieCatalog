@@ -4,7 +4,7 @@ import com.yanyushkin.moviecatalog.presenter.ScreenState
 
 interface Model {
 
-    fun loadMovies(screenState: ScreenState)
+    fun loadMovies(screenState: ScreenState, page: Int)
 
     fun searchMovies(query: String)
 }

@@ -37,6 +37,26 @@
                 android:layout_height="match_parent"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
+            <ProgressBar
+                    android:id="@+id/progress_additional_movies"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    style="@style/MainProgressBar"
+                    android:visibility="gone"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="30dp"
+                    android:layout_alignParentBottom="true"/>
+
+            <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/button_additional_update"
+                    android:layout_width="56dp"
+                    android:layout_height="65dp"
+                    android:src="@drawable/ic_fab"
+                    android:visibility="gone"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="3dp"
+                    android:layout_centerHorizontal="true"/>
+
             <android.support.v4.widget.SwipeRefreshLayout
                     android:id="@+id/layout_swipe"
                     android:layout_width="match_parent"
@@ -53,15 +73,6 @@
                 </android.support.v7.widget.RecyclerView>
 
             </android.support.v4.widget.SwipeRefreshLayout>
-
-            <ProgressBar
-                    android:id="@+id/progress_additional_movies"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    style="@style/MainProgressBar"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="30dp"
-                    android:layout_alignParentBottom="true"/>
 
         </RelativeLayout>
 

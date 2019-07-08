@@ -18,4 +18,19 @@ interface ContentView {
     fun hideRefreshing()
 
     fun showNoInternetSnackBar()
+
+    /**
+     * show additional progress bar
+     */
+    fun showAdditionalLoading()
+
+    /**
+     * hide additional progress bar
+     */
+    fun hideAdditionalLoading()
+
+    /**
+     * show update button
+     */
+    fun showUpdateButton()
 }

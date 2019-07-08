@@ -9,9 +9,9 @@ import javax.inject.Singleton
 @Singleton
 class Repository @Inject constructor(private val moviesApi: MoviesApi) {
 
-    fun getMovies(responseCallback: ResponseCallback<MoviesResponse>) {
+    fun getMovies(responseCallback: ResponseCallback<MoviesResponse>, page: Int) {
         /*async data acquisition*/
-        moviesApi.getAllMovies().enqueue(object : Callback<MoviesResponse> {
+        moviesApi.getAllMovies(page).enqueue(object : Callback<MoviesResponse> {
 
             override fun onFailure(call: Call<MoviesResponse>, t: Throwable): Unit = responseCallback.onError()
 
