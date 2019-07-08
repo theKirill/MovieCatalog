@@ -56,16 +56,17 @@ class MoviesModel(private val presenter: MoviesPresenter) : Model, ViewModel() {
             override fun onSuccess(apiResponse: MoviesResponse) {
                 val moviesFromServer = ArrayList<Movie>()
 
-                if (apiResponse.movies.isEmpty())
+                if (apiResponse.movies.isEmpty()) {
                     presenter.onLoadingSuccessEmpty(query)
-                else
+                } else {
                     apiResponse.movies.forEach {
                         moviesFromServer.add(it.transform())
                     }
 
-                movies.value = moviesFromServer
+                    movies.value = moviesFromServer
 
-                presenter.onLoadingSuccess(screenState, movies.value!!)
+                    presenter.onLoadingSuccess(screenState, movies.value!!)
+                }
             }
         }, query)
     }

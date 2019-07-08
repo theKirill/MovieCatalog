@@ -1,12 +1,13 @@
 package com.yanyushkin.moviecatalog.activity
 
 import android.annotation.SuppressLint
+import android.content.res.Configuration
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.view.KeyEvent
 import android.view.View
-import android.widget.LinearLayout
 import com.yanyushkin.moviecatalog.*
 import com.yanyushkin.moviecatalog.adapter.MoviesAdapter
 import com.yanyushkin.moviecatalog.domain.Movie
@@ -167,10 +168,17 @@ class MainActivity : AppCompatActivity(), MainView {
         })
     }
 
-    private fun initRecyclerView() {
-        val layoutManagerForRV = LinearLayoutManager(this)
-        layoutManagerForRV.orientation = LinearLayout.VERTICAL
+    private fun isLandscapeOrientation(): Boolean =
+        resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
+
+    private fun setLayoutManagerForRV() {
+        val layoutManagerForRV = GridLayoutManager(this, 2)
         rv_movies.layoutManager = layoutManagerForRV
+    }
+
+    private fun initRecyclerView() {
+        if (isLandscapeOrientation())
+            setLayoutManagerForRV()
 
         rv_movies.removeAllViews()
 
@@ -196,7 +204,6 @@ class MainActivity : AppCompatActivity(), MainView {
                         return true
                     }
                 }
-
                 return false
             }
         })

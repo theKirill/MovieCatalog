@@ -44,6 +44,7 @@ class MoviesPresenter : Presenter, LoadingListener {
         error = false
 
         model.clearMovies()
+        mainView.setMovies(ArrayList())
 
         mainView.showNothingFoundLayout(query)
     }
