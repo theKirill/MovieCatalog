@@ -1,5 +1,6 @@
 package com.yanyushkin.moviecatalog.network
 
+import com.yanyushkin.moviecatalog.BuildConfig
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -9,9 +10,9 @@ const val BASE_URL =
 
 interface MoviesApi {
 
-    @GET("discover/movie?api_key=6ccd72a2a8fc239b13f209408fc31c33&language=ru&region=ru&sort_by=release_date.desc&year=2019")
+    @GET("discover/movie?api_key=" + BuildConfig.ApiKey + "&language=ru&region=ru&sort_by=release_date.desc&year=2019")
     fun getAllMovies(@Query("page") page: Int): Call<MoviesResponse>
 
-    @GET("search/movie?api_key=6ccd72a2a8fc239b13f209408fc31c33&language=ru&region=ru")
+    @GET("search/movie?api_key=" + BuildConfig.ApiKey + "6ccd72a2a8fc239b13f209408fc31c33&language=ru&region=ru")
     fun getNecessaryMovies(@Query("query") query: String): Call<MoviesResponse>
 }
