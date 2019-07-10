@@ -83,7 +83,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/toolbar.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/Tools.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/di/PresenterComponent.kt" />
         <option value="$PROJECT_DIR$/../KudaGo/app/src/main/java/com/yanyushkin/kudago/activities/MainActivity.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/model/BaseViewModelFactory.kt" />
@@ -103,6 +102,8 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/view/SearchingView.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/activity/MainActivity.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/presenter/MoviesPresenter.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/Tools.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/Extensions.kt" />
       </list>
     </option>
   </component>
@@ -119,61 +120,29 @@
     <panes>
       <pane id="Scope" />
       <pane id="ProjectPane" />
-      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
             <path>
-              <item name="MovieCatalog2" type="1abcf292:AndroidViewProjectNode" />
+              <item name="MovieCatalog-master" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
             </path>
             <path>
-              <item name="MovieCatalog2" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-            </path>
-            <path>
-              <item name="MovieCatalog2" type="1abcf292:AndroidViewProjectNode" />
+              <item name="MovieCatalog-master" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="moviecatalog" type="cbb59c9e:AndroidPsiDirectoryNode" />
             </path>
             <path>
-              <item name="MovieCatalog2" type="1abcf292:AndroidViewProjectNode" />
+              <item name="MovieCatalog-master" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="moviecatalog" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="activity" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MovieCatalog2" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="moviecatalog" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MovieCatalog2" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="moviecatalog" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="presenter" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MovieCatalog2" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="moviecatalog" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MovieCatalog2" type="1abcf292:AndroidViewProjectNode" />
-              <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -307,10 +276,10 @@
       <window_info anchor="bottom" id="TODO" order="1" />
       <window_info anchor="bottom" id="Terminal" order="2" />
       <window_info anchor="bottom" id="Event Log" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="Build" order="4" weight="0.3400223" />
+      <window_info anchor="bottom" id="Build" order="4" visible="true" weight="0.3400223" />
       <window_info anchor="bottom" id="Run" order="5" weight="0.34559643" />
       <window_info anchor="bottom" id="Logcat" order="6" />
-      <window_info anchor="bottom" id="Android Profiler" order="7" />
+      <window_info anchor="bottom" id="Android Profiler" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Debug" order="8" />
       <window_info anchor="bottom" id="Find" order="9" weight="0.32963374" />
       <window_info anchor="bottom" id="Flutter Performance" order="10" side_tool="true" />
@@ -325,13 +294,6 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../KudaGo/app/src/main/java/com/yanyushkin/kudago/utils/SettingsOfApp.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="20" column="93" lean-forward="true" selection-start-line="20" selection-start-column="93" selection-end-line="20" selection-end-column="93" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/utils/SharedPref.kt" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/viewmodel/MoviesViewModel.kt" />
     <entry file="file://$PROJECT_DIR$/../FilmViewer-master/app/src/main/java/com/margarita/filmviewer/ui/activities/MainActivity.kt">
@@ -393,13 +355,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/build/tmp/kapt3/stubs/debug/com/yanyushkin/moviecatalog/di/AppComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build/tmp/kapt3/stubs/debug/com/yanyushkin/moviecatalog/di/AppComponent.java" />
     <entry file="file://$PROJECT_DIR$/../KudaGo/app/src/main/java/com/yanyushkin/kudago/activities/MainActivity.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="646">
@@ -427,34 +383,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/di/PresenterComponent.kt" />
-    <entry file="file://$PROJECT_DIR$/../Фильмы/MovieCatalog/MovieCatalog/app/src/main/java/com/yanyushkin/moviecatalog/di/NetworkModule.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="23" column="23" lean-forward="true" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Фильмы/MovieCatalog/MovieCatalog/app/src/main/java/com/yanyushkin/moviecatalog/di/PresenterModule.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="13" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Фильмы/MovieCatalog/MovieCatalog/app/src/main/java/com/yanyushkin/moviecatalog/di/AppComponent.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Фильмы/MovieCatalog/MovieCatalog/app/src/main/java/com/yanyushkin/moviecatalog/App.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="20" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../Фильмы/MovieCatalog/MovieCatalog/app/src/main/java/com/yanyushkin/moviecatalog/di/NetworkModule.kt" />
+    <entry file="file://$PROJECT_DIR$/../Фильмы/MovieCatalog/MovieCatalog/app/src/main/java/com/yanyushkin/moviecatalog/di/PresenterModule.kt" />
+    <entry file="file://$PROJECT_DIR$/../Фильмы/MovieCatalog/MovieCatalog/app/src/main/java/com/yanyushkin/moviecatalog/di/AppComponent.kt" />
+    <entry file="file://$PROJECT_DIR$/../Фильмы/MovieCatalog/MovieCatalog/app/src/main/java/com/yanyushkin/moviecatalog/App.kt" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/App.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -599,13 +531,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/Tools.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1088">
-          <caret line="72" column="31" selection-start-line="72" selection-start-column="31" selection-end-line="72" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/network/MovieFromServer.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -647,15 +572,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/Tools.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="18" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/Extensions.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="11" column="50" selection-start-line="11" selection-start-column="50" selection-end-line="11" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/yanyushkin/moviecatalog/activity/MainActivity.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="141" column="18" selection-start-line="141" selection-start-column="18" selection-end-line="141" selection-end-column="18" />
+        <state relative-caret-position="4347">
+          <caret line="189" column="28" selection-start-line="189" selection-start-column="28" selection-end-line="189" selection-end-column="28" />
           <folding>
             <element signature="e#46#737#0" expanded="true" />
-            <element signature="e#3898#3928#1" expanded="true" />
-            <element signature="e#4547#4584#0" expanded="true" />
-            <element signature="e#4599#4637#0" expanded="true" />
           </folding>
         </state>
       </provider>
