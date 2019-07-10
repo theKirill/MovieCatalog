@@ -4,7 +4,7 @@ import com.yanyushkin.moviecatalog.domain.Movie
 
 interface MainView : ContentView, SearchingView {
 
-    fun setMovies(movies: ArrayList<Movie>)
+    fun setMovies(movies: MutableList<Movie>)
 
     fun showErrorLayout()
 }

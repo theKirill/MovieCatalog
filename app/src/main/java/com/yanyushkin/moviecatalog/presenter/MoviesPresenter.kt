@@ -3,7 +3,6 @@ package com.yanyushkin.moviecatalog.presenter
 import com.yanyushkin.moviecatalog.domain.Movie
 import com.yanyushkin.moviecatalog.model.MoviesModel
 import com.yanyushkin.moviecatalog.view.MainView
-import java.util.ArrayList
 
 class MoviesPresenter : Presenter, LoadingListener {
 
@@ -26,14 +25,16 @@ class MoviesPresenter : Presenter, LoadingListener {
     /**
      * successful load/refresh/search data
      */
-    override fun onLoadingSuccess(screenState: ScreenState, movies: ArrayList<Movie>) {
+    override fun onLoadingSuccess(screenState: ScreenState, movies: MutableList<Movie>) {
         hideProgress(screenState)
         error = false
 
-        if (screenState == ScreenState.Refreshing)
-            mainView.clearSearchString()
+        mainView.apply {
+            if (screenState == ScreenState.Refreshing)
+                clearSearchString()
 
-        mainView.setMovies(movies)
+            setMovies(movies)
+        }
     }
 
     /**
@@ -44,9 +45,11 @@ class MoviesPresenter : Presenter, LoadingListener {
         error = false
 
         model.clearMovies()
-        mainView.setMovies(ArrayList())
 
-        mainView.showNothingFoundLayout(query)
+        mainView.apply {
+            setMovies(mutableListOf())
+            showNothingFoundLayout(query)
+        }
     }
 
     /**
@@ -56,22 +59,24 @@ class MoviesPresenter : Presenter, LoadingListener {
         hideProgress(screenState)
         error = false
 
-        when (screenState) {
-            ScreenState.Loading, ScreenState.Searching -> {
-                if (model.getMovies().value == null || model.getMovies().value!!.size == 0) {
-                    mainView.showErrorLayout()
-                    error = true
-                } else {
-                    mainView.showNoInternetSnackBar()
+        mainView.apply {
+            when (screenState) {
+                ScreenState.Loading, ScreenState.Searching -> {
+                    if (model.getMovies().value == null || model.getMovies().value!!.size == 0) {
+                        showErrorLayout()
+                        error = true
+                    } else {
+                        showNoInternetSnackBar()
+                    }
                 }
-            }
 
-            ScreenState.Refreshing -> {
-                mainView.showNoInternetSnackBar()
-            }
+                ScreenState.Refreshing -> {
+                    showNoInternetSnackBar()
+                }
 
-            ScreenState.AdditionalLoading -> {
-                mainView.showUpdateButton()
+                ScreenState.AdditionalLoading -> {
+                    showUpdateButton()
+                }
             }
         }
     }
@@ -116,20 +121,24 @@ class MoviesPresenter : Presenter, LoadingListener {
     }
 
     private fun showProgress(screenState: ScreenState) {
-        when (screenState) {
-            ScreenState.Loading -> mainView.showLoading()
-            ScreenState.Searching -> mainView.showSearchLoading()
-            ScreenState.AdditionalLoading -> mainView.showAdditionalLoading()
-            else -> return
+        mainView.apply {
+            when (screenState) {
+                ScreenState.Loading -> showLoading()
+                ScreenState.Searching -> showSearchLoading()
+                ScreenState.AdditionalLoading -> showAdditionalLoading()
+                else -> return
+            }
         }
     }
 
     private fun hideProgress(screenState: ScreenState) {
-        when (screenState) {
-            ScreenState.Loading -> mainView.hideLoading()
-            ScreenState.Searching -> mainView.hideSearchLoading()
-            ScreenState.Refreshing -> mainView.hideRefreshing()
-            ScreenState.AdditionalLoading -> mainView.hideAdditionalLoading()
+        mainView.apply {
+            when (screenState) {
+                ScreenState.Loading -> hideLoading()
+                ScreenState.Searching -> hideSearchLoading()
+                ScreenState.Refreshing -> hideRefreshing()
+                ScreenState.AdditionalLoading -> hideAdditionalLoading()
+            }
         }
     }
 }

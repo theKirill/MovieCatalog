@@ -10,21 +10,19 @@ import com.yanyushkin.moviecatalog.network.Repository
 import com.yanyushkin.moviecatalog.network.ResponseCallback
 import com.yanyushkin.moviecatalog.presenter.MoviesPresenter
 import com.yanyushkin.moviecatalog.presenter.ScreenState
-import java.util.ArrayList
 import javax.inject.Inject
 
 class MoviesModel(private val presenter: MoviesPresenter) : Model, ViewModel() {
 
     @Inject
     lateinit var repository: Repository
-    private lateinit var movies: MutableLiveData<ArrayList<Movie>>
+    private lateinit var movies: MutableLiveData<MutableList<Movie>>
 
     init {
         App.component.injectsMoviesModel(this)
 
-        if (!::movies.isInitialized) {
+        if (!::movies.isInitialized)
             movies = MutableLiveData()
-        }
     }
 
     override fun loadMovies(screenState: ScreenState, page: Int) {
@@ -33,7 +31,7 @@ class MoviesModel(private val presenter: MoviesPresenter) : Model, ViewModel() {
             override fun onError(): Unit = presenter.onLoadingError(screenState)
 
             override fun onSuccess(apiResponse: MoviesResponse) {
-                val moviesFromServer = ArrayList<Movie>()
+                val moviesFromServer: MutableList<Movie> = mutableListOf()
 
                 apiResponse.movies.forEach {
                     moviesFromServer.add(it.transform())
@@ -59,7 +57,7 @@ class MoviesModel(private val presenter: MoviesPresenter) : Model, ViewModel() {
             override fun onError(): Unit = presenter.onLoadingError(screenState)
 
             override fun onSuccess(apiResponse: MoviesResponse) {
-                val moviesFromServer = ArrayList<Movie>()
+                val moviesFromServer: MutableList<Movie> = mutableListOf()
 
                 if (apiResponse.movies.isEmpty()) {
                     presenter.onLoadingSuccessEmpty(query)
@@ -76,7 +74,7 @@ class MoviesModel(private val presenter: MoviesPresenter) : Model, ViewModel() {
         }, query)
     }
 
-    fun getMovies(): LiveData<ArrayList<Movie>> = movies
+    fun getMovies(): LiveData<MutableList<Movie>> = movies
 
     fun clearMovies() {
         movies = MutableLiveData()

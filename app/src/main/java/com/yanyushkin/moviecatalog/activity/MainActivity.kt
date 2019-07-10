@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity(), MainView {
 
     @Inject
     lateinit var presenter: MoviesPresenter
-    private var movies: ArrayList<Movie> = ArrayList()
+    private var movies: MutableList<Movie> = mutableListOf()
     private lateinit var adapter: MoviesAdapter
     private var rotationScreen = false
     private val ROTATION_KEY = "rotation"
@@ -85,11 +85,14 @@ class MainActivity : AppCompatActivity(), MainView {
              * remember the screen rotation
              */
             outState?.let {
-                outState.clear()
-                outState.putBoolean(ROTATION_KEY, rotationScreen)
 
-                val layoutManagerForRV = rv_movies.layoutManager as LinearLayoutManager
-                outState.putInt(SCROLL_POSITION_KEY, layoutManagerForRV.findFirstVisibleItemPosition())
+                outState.apply {
+                    clear()
+                    putBoolean(ROTATION_KEY, rotationScreen)
+
+                    val layoutManagerForRV = rv_movies.layoutManager as LinearLayoutManager
+                    putInt(SCROLL_POSITION_KEY, layoutManagerForRV.findFirstVisibleItemPosition())
+                }
             }
         }
 
@@ -97,8 +100,11 @@ class MainActivity : AppCompatActivity(), MainView {
          * remember text of search
          */
         outState?.let {
-            outState.putString(TEXT_SEARCH_KEY, et_search.text.toString())
-            outState.putInt(PAGE_KEY, page)
+
+            outState.apply {
+                putString(TEXT_SEARCH_KEY, et_search.text.toString())
+                putInt(PAGE_KEY, page)
+            }
         }
     }
 
@@ -115,11 +121,14 @@ class MainActivity : AppCompatActivity(), MainView {
         layout_swipe.isRefreshing = false
     }
 
-    override fun setMovies(movies: ArrayList<Movie>) {
+    override fun setMovies(movies: MutableList<Movie>) {
         isLoading = false
         this.movies = movies
-        adapter.setItems(this.movies)
-        adapter.notifyDataSetChanged()
+
+        adapter.apply {
+            setItems(movies)
+            notifyDataSetChanged()
+        }
 
         if (page == 1 || rotationScreen) {
             rv_movies.adapter = adapter
@@ -178,17 +187,19 @@ class MainActivity : AppCompatActivity(), MainView {
     override fun clearSearchString(): Unit = et_search.setText("")
 
     private fun initSwipeRefreshListener() {
-        layout_swipe.setColorSchemeResources(R.color.colorElectricBlue)
+        layout_swipe.apply {
+            setColorSchemeResources(R.color.colorElectricBlue)
 
-        layout_swipe.setOnRefreshListener {
-            positionOfFirstVisibleItem = 0
-            page = 1
+            setOnRefreshListener {
+                positionOfFirstVisibleItem = 0
+                page = 1
 
-            if (layout_nothing_found.visibility != View.VISIBLE && layout_error.visibility != View.VISIBLE) {
-                isLoading = true
-                presenter.refreshData(page)
-            } else {
-                hideRefreshing()
+                if (layout_nothing_found.visibility != View.VISIBLE && layout_error.visibility != View.VISIBLE) {
+                    isLoading = true
+                    presenter.refreshData(page)
+                } else {
+                    hideRefreshing()
+                }
             }
         }
     }
@@ -242,9 +253,8 @@ class MainActivity : AppCompatActivity(), MainView {
         if (isLandscapeOrientation())
             setLayoutManagerForRV()
 
-        rv_movies.removeAllViews()
-
         rv_movies.apply {
+            removeAllViews()
             /*Set a adapter for rv*/
             initAdapter()
             rv_movies.adapter = adapter

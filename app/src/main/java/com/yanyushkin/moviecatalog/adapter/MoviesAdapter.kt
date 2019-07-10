@@ -1,5 +1,8 @@
 package com.yanyushkin.moviecatalog.adapter
 
+import android.content.Context
+import android.content.SharedPreferences
+import android.content.res.Resources
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +13,7 @@ import com.yanyushkin.moviecatalog.domain.Movie
 import com.yanyushkin.moviecatalog.utils.OnClickListener
 import kotlinx.android.synthetic.main.card_view.view.*
 
-class MoviesAdapter(private var movies: ArrayList<Movie>, private val clickListener: OnClickListener) :
+class MoviesAdapter(private var movies: MutableList<Movie>, private val clickListener: OnClickListener) :
     RecyclerView.Adapter<MoviesAdapter.ViewHolder>() {
 
     /**
@@ -29,7 +32,7 @@ class MoviesAdapter(private var movies: ArrayList<Movie>, private val clickListe
      */
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int): Unit = viewHolder.bind(position)
 
-    fun setItems(movies: ArrayList<Movie>) {
+    fun setItems(movies: MutableList<Movie>) {
         this.movies = movies
         notifyDataSetChanged()
     }
@@ -67,38 +70,42 @@ class MoviesAdapter(private var movies: ArrayList<Movie>, private val clickListe
         private fun setDate(movie: Movie) {
             val date = movie.getDate
 
-            if (date.isNotEmpty()) {
-                itemView.tv_date.text = date
-            } else {
-                itemView.image_calendar.visibility = View.GONE
-                itemView.tv_date.visibility = View.GONE
+            itemView.apply {
+                if (date.isNotEmpty()) {
+                    tv_date.text = date
+                } else {
+                    image_calendar.visibility = View.GONE
+                    tv_date.visibility = View.GONE
+                }
             }
         }
 
         private fun setLike(movie: Movie) {
-            /*check for ID in shared pref and set like*/
-            var imageHeart =
-                if (itemView.context.getPreferences().hasLike(movie.getId))
-                    R.drawable.ic_heart_fill
-                else
-                    R.drawable.ic_heart
-
-            movie.like = imageHeart == R.drawable.ic_heart_fill
-
-            itemView.image_heart.setImageResource(imageHeart)
-
-            itemView.image_heart.setOnClickListener {
-                if (movie.like) {
-                    imageHeart = R.drawable.ic_heart
-                    itemView.context.getPreferences().removeId(movie.getId)
-                } else {
-                    imageHeart = R.drawable.ic_heart_fill
-                    itemView.context.getPreferences().saveId(movie.getId)
-                }
+            itemView.apply {
+                /*check for ID in shared pref and set like*/
+                var imageHeart =
+                    if (context.getPreferences().hasLike(movie.getId))
+                        R.drawable.ic_heart_fill
+                    else
+                        R.drawable.ic_heart
 
                 movie.like = imageHeart == R.drawable.ic_heart_fill
 
-                itemView.image_heart.setImageResource(imageHeart)
+                image_heart.setImageResource(imageHeart)
+
+                image_heart.setOnClickListener {
+                    if (movie.like) {
+                        imageHeart = R.drawable.ic_heart
+                        context.getPreferences().removeId(movie.getId)
+                    } else {
+                        imageHeart = R.drawable.ic_heart_fill
+                        context.getPreferences().saveId(movie.getId)
+                    }
+
+                    movie.like = imageHeart == R.drawable.ic_heart_fill
+
+                    image_heart.setImageResource(imageHeart)
+                }
             }
         }
     }

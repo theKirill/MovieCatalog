@@ -1,12 +1,10 @@
 package com.yanyushkin.moviecatalog.presenter
 
 import com.yanyushkin.moviecatalog.domain.Movie
-import com.yanyushkin.moviecatalog.presenter.ScreenState
-import java.util.ArrayList
 
 interface LoadingListener {
 
-    fun onLoadingSuccess(screenState: ScreenState, movies: ArrayList<Movie>)
+    fun onLoadingSuccess(screenState: ScreenState, movies: MutableList<Movie>)
 
     fun onLoadingSuccessEmpty(query: String)
 

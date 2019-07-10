@@ -7,6 +7,7 @@ import com.yanyushkin.moviecatalog.di.NetworkModule
 import com.yanyushkin.moviecatalog.di.PresenterModule
 
 class App : Application() {
+
     companion object {
         lateinit var component: AppComponent
     }
