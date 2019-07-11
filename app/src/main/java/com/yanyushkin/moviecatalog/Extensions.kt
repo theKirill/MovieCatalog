@@ -7,7 +7,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import com.yanyushkin.moviecatalog.utils.MySnackBar
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.toolbar.*
+import kotlinx.android.synthetic.main.toolbar_layout.*
 
 private const val APP_PREFERENCES_KEY = "settings"
 

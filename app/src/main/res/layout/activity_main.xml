@@ -24,7 +24,7 @@
                 app:elevation="0dp">
 
             <include
-                    layout="@layout/toolbar"
+                    layout="@layout/toolbar_layout"
                     android:id="@+id/toolbar_movies"
                     android:layout_height="match_parent"
                     android:layout_width="match_parent"/>
@@ -101,7 +101,7 @@
                     android:layout_marginEnd="56dp"
                     android:layout_centerVertical="true"
                     android:textSize="16sp"
-                    android:text="@string/error"
+                    android:text="@string/error_text"
                     style="@style/ErrorTextStyle"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentStart="true"/>

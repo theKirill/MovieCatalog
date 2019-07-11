@@ -1,8 +1,5 @@
 package com.yanyushkin.moviecatalog.adapter
 
-import android.content.Context
-import android.content.SharedPreferences
-import android.content.res.Resources
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +8,7 @@ import com.bumptech.glide.Glide
 import com.yanyushkin.moviecatalog.*
 import com.yanyushkin.moviecatalog.domain.Movie
 import com.yanyushkin.moviecatalog.utils.OnClickListener
-import kotlinx.android.synthetic.main.card_view.view.*
+import kotlinx.android.synthetic.main.card_view_layout.view.*
 
 class MoviesAdapter(private var movies: MutableList<Movie>, private val clickListener: OnClickListener) :
     RecyclerView.Adapter<MoviesAdapter.ViewHolder>() {
@@ -21,7 +18,7 @@ class MoviesAdapter(private var movies: MutableList<Movie>, private val clickLis
      */
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder = ViewHolder(
         LayoutInflater.from(viewGroup.context).inflate(
-            R.layout.card_view, viewGroup, false
+            R.layout.card_view_layout, viewGroup, false
         )
     )
 

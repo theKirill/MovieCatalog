@@ -37,7 +37,7 @@
         <item name="android:indeterminateTint">@color/colorElectricBlue</item>
     </style>
 
-    <style name="ProgressBarHorizontal" parent="@style/Widget.AppCompat.ProgressBar.Horizontal">
+    <style name="HorizontalProgressBar" parent="@style/Widget.AppCompat.ProgressBar.Horizontal">
         <item name="android:progressBackgroundTint">@color/colorElectricBlue</item>
         <item name="android:indeterminateTint">@color/colorElectricBlue</item>
         <item name="android:indeterminate">true</item>

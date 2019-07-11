@@ -17,7 +17,7 @@ import com.yanyushkin.moviecatalog.presenter.MoviesPresenter
 import com.yanyushkin.moviecatalog.utils.OnClickListener
 import com.yanyushkin.moviecatalog.view.MainView
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.toolbar.*
+import kotlinx.android.synthetic.main.toolbar_layout.*
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), MainView {
@@ -143,7 +143,7 @@ class MainActivity : AppCompatActivity(), MainView {
     override fun showNoInternetSnackBar() {
         isLoading = false
         container_data.show()
-        showSnackBar(getString(R.string.errorSnack))
+        showSnackBar(getString(R.string.error_message))
     }
 
     override fun showAdditionalLoading() {
@@ -181,7 +181,7 @@ class MainActivity : AppCompatActivity(), MainView {
         isLoading = false
         layout_nothing_found.show()
         tv_nothing_found.text =
-            "${getString(R.string.notFoundFirstPart)} \"$query\" ${getString(R.string.notFoundSecondPart)}"
+            "${getString(R.string.notFoundFirstPart_text)} \"$query\" ${getString(R.string.notFoundSecondPart_text)}"
     }
 
     override fun clearSearchString(): Unit = et_search.setText("")
