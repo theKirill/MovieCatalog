@@ -18,7 +18,7 @@
             android:orientation="vertical">
 
         <EditText
-                android:id="@+id/et_search"
+                android:id="@+id/search_et"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:hint="@string/search_hint"
@@ -37,7 +37,7 @@
                 android:imeOptions="actionSearch"/>
 
         <ProgressBar
-                android:id="@+id/progress_search"
+                android:id="@+id/search_pb"
                 style="@style/HorizontalProgressBar"
                 android:layout_width="match_parent"
                 android:layout_height="15dp"

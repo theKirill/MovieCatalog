@@ -13,6 +13,7 @@ import android.widget.LinearLayout
 import com.yanyushkin.moviecatalog.*
 import com.yanyushkin.moviecatalog.adapter.MoviesAdapter
 import com.yanyushkin.moviecatalog.domain.Movie
+import com.yanyushkin.moviecatalog.extensions.*
 import com.yanyushkin.moviecatalog.presenter.MoviesPresenter
 import com.yanyushkin.moviecatalog.utils.OnClickListener
 import com.yanyushkin.moviecatalog.view.MainView
@@ -50,7 +51,7 @@ class MainActivity : AppCompatActivity(), MainView {
         presenter.attach(this)
 
         if (savedInstanceState != null) {
-            et_search.setText(savedInstanceState.getString(TEXT_SEARCH_KEY))
+            search_et.setText(savedInstanceState.getString(TEXT_SEARCH_KEY))
             page = savedInstanceState.getInt(PAGE_KEY)
 
             /**
@@ -62,7 +63,7 @@ class MainActivity : AppCompatActivity(), MainView {
                 positionOfFirstVisibleItem =
                     savedInstanceState.getInt(SCROLL_POSITION_KEY) //look where we stopped before the change of orientation
 
-                presenter.loadDataAfterRotationScreen(et_search.text.toString())
+                presenter.loadDataAfterRotationScreen(search_et.text.toString())
             } else {
                 loadOrSearchData()
             }
@@ -90,7 +91,7 @@ class MainActivity : AppCompatActivity(), MainView {
                     clear()
                     putBoolean(ROTATION_KEY, rotationScreen)
 
-                    val layoutManagerForRV = rv_movies.layoutManager as LinearLayoutManager
+                    val layoutManagerForRV = movies_rv.layoutManager as LinearLayoutManager
                     putInt(SCROLL_POSITION_KEY, layoutManagerForRV.findFirstVisibleItemPosition())
                 }
             }
@@ -102,7 +103,7 @@ class MainActivity : AppCompatActivity(), MainView {
         outState?.let {
 
             outState.apply {
-                putString(TEXT_SEARCH_KEY, et_search.text.toString())
+                putString(TEXT_SEARCH_KEY, search_et.text.toString())
                 putInt(PAGE_KEY, page)
             }
         }
@@ -111,7 +112,7 @@ class MainActivity : AppCompatActivity(), MainView {
     override fun showLoading() {
         layout_error.hide()
         layout_nothing_found.hide()
-        container_data.hide()
+        layout_container_data.hide()
         layout_pb.show()
     }
 
@@ -131,38 +132,38 @@ class MainActivity : AppCompatActivity(), MainView {
         }
 
         if (page == 1 || rotationScreen) {
-            rv_movies.adapter = adapter
-            rv_movies.scrollToPosition(positionOfFirstVisibleItem)
+            movies_rv.adapter = adapter
+            movies_rv.scrollToPosition(positionOfFirstVisibleItem)
 
             rotationScreen = false
         }
 
-        container_data.show()
+        layout_container_data.show()
     }
 
     override fun showNoInternetSnackBar() {
         isLoading = false
-        container_data.show()
+        layout_container_data.show()
         showSnackBar(getString(R.string.error_message))
     }
 
     override fun showAdditionalLoading() {
-        button_additional_update.hide()
-        progress_additional_movies.show()
+        additional_update_btn.hide()
+        additional_movies_pb.show()
     }
 
-    override fun hideAdditionalLoading(): Unit = progress_additional_movies.hide()
+    override fun hideAdditionalLoading(): Unit = additional_movies_pb.hide()
 
     override fun showUpdateButton() {
         isLoading = false
-        button_additional_update.show()
+        additional_update_btn.show()
     }
 
     override fun showErrorLayout() {
         isLoading = false
         layout_pb.hide()
         layout_nothing_found.hide()
-        container_data.hide()
+        layout_container_data.hide()
         layout_error.show()
     }
 
@@ -170,21 +171,21 @@ class MainActivity : AppCompatActivity(), MainView {
         layout_error.hide()
         layout_nothing_found.hide()
         layout_pb.hide()
-        container_data.hide()
-        progress_search.show()
+        layout_container_data.hide()
+        search_pb.show()
     }
 
-    override fun hideSearchLoading(): Unit = progress_search.makeInvisible()
+    override fun hideSearchLoading(): Unit = search_pb.makeInvisible()
 
     @SuppressLint("SetTextI18n")
     override fun showNothingFoundLayout(query: String) {
         isLoading = false
         layout_nothing_found.show()
-        tv_nothing_found.text =
+        nothing_found_tv.text =
             "${getString(R.string.notFoundFirstPart_text)} \"$query\" ${getString(R.string.notFoundSecondPart_text)}"
     }
 
-    override fun clearSearchString(): Unit = et_search.setText("")
+    override fun clearSearchString(): Unit = search_et.setText("")
 
     private fun initSwipeRefreshListener() {
         layout_swipe.apply {
@@ -204,6 +205,28 @@ class MainActivity : AppCompatActivity(), MainView {
         }
     }
 
+    private fun initRecyclerView() {
+        if (isLandscapeOrientation())
+            setLayoutManagerForRV()
+
+        movies_rv.apply {
+            removeAllViews()
+            /*Set a adapter for rv*/
+            initAdapter()
+            movies_rv.adapter = adapter
+        }
+
+        initScrollListenerForRV()
+    }
+
+    private fun isLandscapeOrientation(): Boolean =
+        resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
+
+    private fun setLayoutManagerForRV() {
+        val layoutManagerForRV = GridLayoutManager(this, 2)
+        movies_rv.layoutManager = layoutManagerForRV
+    }
+
     private fun initAdapter() {
         /*Create adapter with listener of click on element*/
         adapter = MoviesAdapter(movies, object : OnClickListener {
@@ -215,19 +238,11 @@ class MainActivity : AppCompatActivity(), MainView {
         })
     }
 
-    private fun isLandscapeOrientation(): Boolean =
-        resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
-
-    private fun setLayoutManagerForRV() {
-        val layoutManagerForRV = GridLayoutManager(this, 2)
-        rv_movies.layoutManager = layoutManagerForRV
-    }
-
     private fun initScrollListenerForRV() {
-        val layoutManagerForRV = rv_movies.layoutManager as LinearLayoutManager
+        val layoutManagerForRV = movies_rv.layoutManager as LinearLayoutManager
         layoutManagerForRV.orientation = LinearLayout.VERTICAL
 
-        rv_movies.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+        movies_rv.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
 
@@ -236,35 +251,21 @@ class MainActivity : AppCompatActivity(), MainView {
                 positionOfFirstVisibleItem =
                     layoutManagerForRV.findFirstVisibleItemPosition()//position of the 1st element
 
-                if (!isLoading && et_search.text.toString().isEmpty()) {
+                if (!isLoading && search_et.text.toString().isEmpty()) {
                     if ((visibleItemsCount + positionOfFirstVisibleItem) >= totalItemsCount) {
                         page++
                         isLoading = true
                         presenter.loadData(page)
                     } else {
-                        button_additional_update.hide()
+                        additional_update_btn.hide()
                     }
                 }
             }
         })
     }
 
-    private fun initRecyclerView() {
-        if (isLandscapeOrientation())
-            setLayoutManagerForRV()
-
-        rv_movies.apply {
-            removeAllViews()
-            /*Set a adapter for rv*/
-            initAdapter()
-            rv_movies.adapter = adapter
-        }
-
-        initScrollListenerForRV()
-    }
-
     private fun loadOrSearchData() {
-        val query = et_search.text.toString()
+        val query = search_et.text.toString()
         isLoading = true
 
         if (query.isNotEmpty())
@@ -274,7 +275,7 @@ class MainActivity : AppCompatActivity(), MainView {
     }
 
     private fun initKeyListenerOnKeyBoard() {
-        et_search.setOnKeyListener(object : View.OnKeyListener {
+        search_et.setOnKeyListener(object : View.OnKeyListener {
             override fun onKey(v: View?, keyCode: Int, event: KeyEvent?): Boolean {
                 event?.let {
                     if ((event.action == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER || keyCode == KeyEvent.KEYCODE_BACK)) {
@@ -295,14 +296,14 @@ class MainActivity : AppCompatActivity(), MainView {
     }
 
     private fun initButtonsUpdateClickListener() {
-        button_update.setOnClickListener {
+        update_btn.setOnClickListener {
             positionOfFirstVisibleItem = 0
             page = 1
 
             loadOrSearchData()
         }
 
-        button_additional_update.setOnClickListener {
+        additional_update_btn.setOnClickListener {
             presenter.loadData(page)
         }
     }

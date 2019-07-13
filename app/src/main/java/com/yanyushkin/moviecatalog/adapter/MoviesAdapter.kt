@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.yanyushkin.moviecatalog.*
 import com.yanyushkin.moviecatalog.domain.Movie
+import com.yanyushkin.moviecatalog.extensions.*
 import com.yanyushkin.moviecatalog.utils.OnClickListener
 import kotlinx.android.synthetic.main.card_view_layout.view.*
 
@@ -54,14 +55,14 @@ class MoviesAdapter(private var movies: MutableList<Movie>, private val clickLis
         }
 
         private fun setTitle(movie: Movie) {
-            itemView.tv_title.text = movie.getTitle
+            itemView.title_tv.text = movie.getTitle
         }
 
         private fun setPoster(movie: Movie) =
-            Glide.with(itemView.cv_movie).load(movie.getPosterURL).into(itemView.image_poster)
+            Glide.with(itemView.movie_cv).load(movie.getPosterURL).into(itemView.poster_iv)
 
         private fun setDescription(movie: Movie) {
-            itemView.tv_description.text = movie.getDescription
+            itemView.description_tv.text = movie.getDescription
         }
 
         private fun setDate(movie: Movie) {
@@ -69,10 +70,10 @@ class MoviesAdapter(private var movies: MutableList<Movie>, private val clickLis
 
             itemView.apply {
                 if (date.isNotEmpty()) {
-                    tv_date.text = date
+                    date_tv.text = date
                 } else {
-                    image_calendar.visibility = View.GONE
-                    tv_date.visibility = View.GONE
+                    calendar_iv.visibility = View.GONE
+                    date_tv.visibility = View.GONE
                 }
             }
         }
@@ -88,9 +89,9 @@ class MoviesAdapter(private var movies: MutableList<Movie>, private val clickLis
 
                 movie.like = imageHeart == R.drawable.ic_heart_fill
 
-                image_heart.setImageResource(imageHeart)
+                heart_iv.setImageResource(imageHeart)
 
-                image_heart.setOnClickListener {
+                heart_iv.setOnClickListener {
                     if (movie.like) {
                         imageHeart = R.drawable.ic_heart
                         context.getPreferences().removeId(movie.getId)
@@ -101,7 +102,7 @@ class MoviesAdapter(private var movies: MutableList<Movie>, private val clickLis
 
                     movie.like = imageHeart == R.drawable.ic_heart_fill
 
-                    image_heart.setImageResource(imageHeart)
+                    heart_iv.setImageResource(imageHeart)
                 }
             }
         }
